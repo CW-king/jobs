@@ -1,0 +1,8 @@
+{
+  "name": "public-jobs",
+  "private": true,
+  "type": "module",
+  "description": "공공기관 고졸·특성화고 채용공고 자동 수집",
+  "scripts": { "collect": "node scripts/collect.mjs" },
+  "engines": { "node": ">=18" }
+}

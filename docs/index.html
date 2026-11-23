@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>채용공고판</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="공공기관 고졸·특성화고 채용과 대기업·중견기업 생산·기술직 공고를 하루 두 번 자동으로 모아 보여줍니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Black+Han+Sans&display=swap">
+<style>
+/* Layout: 남색 상단 내비 + 왼쪽 분류 사이드바 + 3열 공고 카드, 상세는 오른쪽 서랍 */
+:root{
+  --bg:#f6f8fc;--surface:#ffffff;--surface-2:#eff3fa;--line:#d6e0ee;--line-soft:#e6edf6;
+  --ink:#0f2547;--ink-2:#3b5172;--muted:#64768f;
+  --navy:#0a2c5c;--navy-2:#123f7d;--on-navy:#ffffff;--on-navy-2:#c9daf3;
+  --gold:#ffd23f;--on-gold:#0a2c5c;--accent:#1556b8;--accent-soft:#e6efff;--accent-ink:#0f4ba3;
+  --hot:#c8322f;--hot-soft:#fde8e7;--warn:#a86200;--warn-soft:#fff1d6;--ok:#17804b;--ok-soft:#e2f5ea;
+  --star:#e09a00;--scrim:rgba(6,18,38,.55);
+  --shadow:0 2px 10px rgba(16,42,84,.07);--shadow-h:0 10px 26px rgba(16,42,84,.16);
+  --f-display:"Black Han Sans","IBM Plex Sans KR","Malgun Gothic",sans-serif;
+  --f-body:"IBM Plex Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0b1424;--surface:#13203a;--surface-2:#1a2a47;--line:#2a3d60;--line-soft:#22334f;
+  --ink:#e8eefa;--ink-2:#b4c3dc;--muted:#8899b6;
+  --navy:#071d3d;--navy-2:#0e2f5f;--on-navy:#ffffff;--on-navy-2:#a9c1e6;
+  --accent:#7aa8ff;--accent-soft:#1d3560;--accent-ink:#a9c6ff;
+  --hot:#ff7a72;--hot-soft:#4a1f22;--warn:#ffc163;--warn-soft:#45330f;--ok:#6fd59c;--ok-soft:#163b2a;
+  --star:#ffc53d;--scrim:rgba(0,0,0,.6);
+  --shadow:0 2px 10px rgba(0,0,0,.3);--shadow-h:0 10px 26px rgba(0,0,0,.45);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b1424;--surface:#13203a;--surface-2:#1a2a47;--line:#2a3d60;--line-soft:#22334f;
+  --ink:#e8eefa;--ink-2:#b4c3dc;--muted:#8899b6;
+  --navy:#071d3d;--navy-2:#0e2f5f;--on-navy:#ffffff;--on-navy-2:#a9c1e6;
+  --accent:#7aa8ff;--accent-soft:#1d3560;--accent-ink:#a9c6ff;
+  --hot:#ff7a72;--hot-soft:#4a1f22;--warn:#ffc163;--warn-soft:#45330f;--ok:#6fd59c;--ok-soft:#163b2a;
+  --star:#ffc53d;--scrim:rgba(0,0,0,.6);
+  --shadow:0 2px 10px rgba(0,0,0,.3);--shadow-h:0 10px 26px rgba(0,0,0,.45);color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--navy)}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+svg.i{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* 상단 바 */
+.top{background:linear-gradient(100deg,var(--navy),var(--navy-2));color:var(--on-navy);position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+.top-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-block:12px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand svg{width:36px;height:36px;stroke-width:1.6}
+.brand h1{font-family:var(--f-display);font-weight:400;font-size:clamp(22px,2.4vw,30px);margin:0;letter-spacing:-.3px;line-height:1.15;text-wrap:balance}
+.brand h1 em{font-style:normal;color:var(--gold)}
+.tagline{color:var(--on-navy-2);font-size:14px;padding-left:16px;border-left:1px solid rgba(255,255,255,.3);white-space:nowrap}
+.nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav a{display:flex;align-items:center;gap:6px;color:var(--on-navy);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600;font-size:14px;white-space:nowrap}
+.nav a:hover{background:rgba(255,255,255,.12)}
+.nav a[aria-current="page"]{background:var(--on-navy);color:var(--navy)}
+.nav .cnt{background:var(--gold);color:var(--on-gold);border-radius:10px;font-size:11px;padding:0 6px;font-weight:700;min-width:18px;text-align:center}
+.nav .cnt:empty{display:none}
+
+/* 본문 */
+.page{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:240px minmax(0,1fr);gap:20px;padding-block:22px 40px}
+.page>*{min-width:0}
+.drawer{overflow-wrap:anywhere}
+aside{display:flex;flex-direction:column;gap:14px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px);align-self:start}
+.total{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:16px 18px;display:flex;align-items:center;gap:14px}
+.total .ic{width:52px;height:52px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none}
+.total .ic svg{width:28px;height:28px}
+.total small{display:block;font-weight:600;color:var(--ink-2)}
+.total strong{font-family:var(--f-display);font-weight:400;font-size:34px;line-height:1}
+.total strong span{font-family:var(--f-body);font-size:18px;font-weight:700;margin-left:2px}
+.total .upd{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.sectors{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.sectors h2{margin:0;background:var(--navy-2);color:var(--on-navy);font-size:16px;padding:12px 18px}
+.sectors button{display:flex;align-items:center;gap:10px;width:100%;border:0;border-top:1px solid var(--line-soft);background:none;padding:11px 16px;text-align:left;font-weight:600;font-size:15px}
+.sectors button:hover{background:var(--surface-2)}
+.sectors button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent-ink)}
+.sectors button .n{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+.sectors button svg{color:var(--accent)}
+.tip{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;font-size:13px;color:var(--ink-2)}
+.tip b{color:var(--ink)}
+
+/* 필터 */
+.filters{display:grid;grid-template-columns:minmax(200px,2.2fr) repeat(3,minmax(130px,1fr)) auto;gap:10px;margin-bottom:14px}
+.field{position:relative;display:flex;align-items:center}
+.field svg{position:absolute;left:12px;color:var(--ink-2);pointer-events:none}
+.field input,.field select{width:100%;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:11px 12px 11px 40px;font-size:14px;box-shadow:var(--shadow);appearance:none}
+.field select{padding-right:30px;font-weight:600;background-image:linear-gradient(45deg,transparent 50%,var(--ink-2) 50%),linear-gradient(135deg,var(--ink-2) 50%,transparent 50%);background-position:calc(100% - 17px) 52%,calc(100% - 12px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+.reset{border:1px solid var(--line);background:var(--surface);border-radius:12px;width:46px;display:grid;place-items:center;box-shadow:var(--shadow)}
+.reset:hover{color:var(--accent)}
+.status{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px;color:var(--ink-2);font-size:14px}
+.status b{color:var(--ink)}
+
+/* 카드 */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:16px 18px 14px;display:flex;flex-direction:column;gap:12px;transition:transform .18s,box-shadow .18s,border-color .18s;cursor:pointer;min-width:0;text-align:left}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-h);border-color:var(--accent)}
+.c-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.org{display:flex;align-items:center;gap:8px;min-width:0;font-weight:700;color:var(--accent-ink);font-size:14px}
+.org .mk{width:30px;height:30px;border-radius:9px;background:var(--navy-2);color:var(--on-navy);display:grid;place-items:center;font-family:var(--f-display);font-size:15px;flex:none}
+.org span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dday{flex:none;font-weight:700;font-size:13px;border-radius:20px;padding:3px 10px;background:var(--surface-2);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.dday.hot{background:var(--hot-soft);color:var(--hot)}
+.dday.warn{background:var(--warn-soft);color:var(--warn)}
+.card h3{margin:0;font-size:17px;font-weight:700;letter-spacing:-.3px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:2.8em}
+.c-body{display:grid;grid-template-columns:auto minmax(0,1fr);gap:7px 10px;align-items:center}
+.lbl{display:inline-flex;align-items:center;gap:6px;background:var(--surface-2);border-radius:20px;padding:4px 10px;font-size:12.5px;font-weight:600;color:var(--ink-2);white-space:nowrap}
+.lbl svg{width:15px;height:15px;color:var(--accent)}
+.val{font-weight:600;font-size:14.5px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.c-foot{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding-top:10px;border-top:1px solid var(--line-soft);font-size:12.5px;margin-top:auto}
+.chip{display:inline-flex;align-items:center;gap:4px;border-radius:8px;padding:4px 8px;font-weight:700;background:var(--surface-2);color:var(--ink-2)}
+.chip.sp{background:var(--gold);color:var(--on-gold)}
+.chip.new{background:var(--ok-soft);color:var(--ok)}
+.mini{margin-left:auto;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:4px 8px;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:4px;color:var(--ink-2)}
+.mini svg{width:14px;height:14px}
+.mini[aria-pressed="true"]{border-color:var(--star);color:var(--star)}
+.mini[aria-pressed="true"] svg{fill:var(--star)}
+.empty{grid-column:1/-1;background:var(--surface);border:1px dashed var(--line);border-radius:16px;padding:36px;text-align:center;color:var(--ink-2)}
+.sec-title{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin:14px 0 0;font-size:19px}
+.sec-title:first-child{margin-top:0}
+.sec-title span{font-size:14px;color:var(--muted);font-weight:500}
+
+/* 안내 */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:20px}
+.panel h2{margin:0 0 6px;font-size:20px}
+.panel p{margin:0 0 14px;color:var(--ink-2)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;padding:0;margin:0 0 22px;list-style:none;counter-reset:s}
+.steps li{background:var(--surface-2);border-radius:12px;padding:14px;counter-increment:s;font-size:14px;color:var(--ink-2)}
+.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--navy-2);color:var(--on-navy);font-weight:700;font-size:13px;margin-bottom:6px}
+.steps li b{display:block;color:var(--ink);font-size:15px;margin-bottom:2px}
+.links{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.links a{display:block;border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-decoration:none;color:var(--ink);background:var(--surface-2)}
+.links a:hover{border-color:var(--accent)}
+.links a b{display:flex;align-items:center;gap:6px;color:var(--accent-ink)}
+.links a small{display:block;color:var(--ink-2);margin-top:4px;font-size:13px}
+.sub{font-size:16px;margin:4px 0 10px}
+.foot{margin-top:24px;font-size:13px;color:var(--muted);line-height:1.8}
+
+/* 상세 서랍 */
+.overlay{position:fixed;inset:0;background:var(--scrim);z-index:40;display:flex;justify-content:flex-end}
+.drawer{background:var(--bg);width:min(640px,100%);height:100%;overflow:auto;padding:max(20px,env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) 20px}
+.d-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.close{border:0;background:var(--surface-2);border-radius:10px;padding:8px 14px;font-weight:600}
+.drawer h2{margin:14px 0 4px;font-size:22px;letter-spacing:-.4px;line-height:1.35;text-wrap:balance}
+.kv{display:grid;grid-template-columns:90px minmax(0,1fr);gap:10px;border-bottom:1px solid var(--line-soft);padding:10px 0;font-size:14px}
+.kv span:first-child{color:var(--muted);font-weight:600}
+.note{background:var(--surface-2);border-left:4px solid var(--star);padding:12px 14px;border-radius:8px;font-size:13px;color:var(--ink-2);margin:14px 0}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.acts a{display:inline-flex;align-items:center;gap:6px;background:var(--navy-2);color:var(--on-navy);padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;font-size:14px}
+.acts a.sec{background:var(--accent-soft);color:var(--accent-ink)}
+.drawer .panel{margin-top:14px;padding:16px}
+.drawer .panel h3{margin:0 0 8px;font-size:16px}
+.drawer .panel div{white-space:pre-line;font-size:14px;color:var(--ink-2)}
+
+/* 자격증 */
+.chip.cert{background:var(--accent-soft);color:var(--accent-ink);border:0;font:inherit;font-size:12.5px;font-weight:700}
+.chip.cert svg{width:13px;height:13px}
+button.chip.cert{cursor:pointer;padding:6px 10px;font-size:13px}
+button.chip.cert:hover{outline:2px solid var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.mini-note{font-size:13px;color:var(--muted);margin:0 0 10px}
+.d-org{color:var(--accent-ink);font-weight:700;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.d-kv{margin-top:10px}
+.cert-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--accent-soft);color:var(--accent-ink);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:14px}
+.cert-bar button{margin-left:auto;border:1px solid var(--accent);background:var(--surface);color:var(--accent-ink);border-radius:8px;padding:5px 10px;font-weight:600;font-size:13px}
+.cfilters{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--ink-2);margin:0 0 10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:10px;border-radius:3px;display:inline-block}
+.p1{background:var(--navy-2)}.p2{background:var(--gold)}
+.cert-list{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.cert-row{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr) auto;gap:12px;align-items:center;border:1px solid var(--line-soft);background:var(--surface);border-radius:12px;padding:10px 14px;text-align:left}
+.cert-row:hover{border-color:var(--accent);background:var(--surface-2)}
+.cn{display:flex;flex-direction:column;min-width:0}
+.cn b{font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cn small,.cc small{font-size:12px;color:var(--muted);font-weight:500}
+.cbar{display:flex;height:12px;background:var(--surface-2);border-radius:6px;overflow:hidden}
+.cbar i{display:block;height:100%}
+.cc{display:flex;flex-direction:column;align-items:flex-end;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:620px){.cert-row{grid-template-columns:minmax(0,1fr) auto}.cbar{grid-column:1/-1;grid-row:2}.cfilters{grid-template-columns:1fr}}
+
+@media (max-width:1180px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:1fr 1fr 1fr}.filters .search{grid-column:1/-1}.tagline{display:none}}
+@media (max-width:860px){.page{grid-template-columns:1fr}aside{position:static}.sectors{display:flex;overflow-x:auto;border-radius:12px}.sectors h2{display:none}.sectors button{border-top:0;border-left:1px solid var(--line-soft);white-space:nowrap;width:auto;padding:10px 14px}.sectors button:first-of-type{border-left:0}.tip{display:none}.nav{margin-left:0;width:100%;overflow-x:auto;flex-wrap:nowrap}}
+@media (max-width:620px){.grid{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}.reset{width:auto;height:44px}.nav a{padding:7px 9px;font-size:13px}.total strong{font-size:28px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="ic-bank" viewBox="0 0 24 24"><path d="M3 21h18M4 10h16M12 3l9 5H3l9-5zM6 10v8M10 10v8M14 10v8M18 10v8"/></symbol>
+<symbol id="ic-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></symbol>
+<symbol id="ic-cap" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></symbol>
+<symbol id="ic-star" viewBox="0 0 24 24"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/></symbol>
+<symbol id="ic-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+<symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+<symbol id="ic-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+<symbol id="ic-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></symbol>
+<symbol id="ic-bag" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 12h18"/></symbol>
+<symbol id="ic-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5M16 4.8a3.5 3.5 0 0 1 0 6.4M18 14.8c2 .7 3.2 2.4 3.5 5.2"/></symbol>
+<symbol id="ic-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.6-.5-.5-2.6z"/></symbol>
+<symbol id="ic-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></symbol>
+<symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="ic-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6"/></symbol>
+<symbol id="ic-factory" viewBox="0 0 24 24"><path d="M3 21V10l6 4V10l6 4V5h6v16z"/></symbol>
+<symbol id="ic-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></symbol>
+<symbol id="ic-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9.5h4.5a2 2 0 0 1 0 4H9.5a2 2 0 0 0 0 4H15M12 7v2.5M12 17.5V20"/></symbol>
+<symbol id="ic-out" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+</defs></svg>
+
+<header class="top"><div class="top-in gut">
+  <div class="brand"><svg class="i"><use href="#ic-bank"/></svg><h1><em>채용</em>공고판</h1></div>
+  <div class="tagline">고졸·특성화고 학생을 위한 공공기관·대기업 생산직 공고, 하루 두 번 자동 업데이트</div>
+  <nav class="nav" aria-label="주요 메뉴">
+    <a href="#list"><svg class="i"><use href="#ic-home"/></svg>공공기관</a>
+    <a href="#private"><svg class="i"><use href="#ic-factory"/></svg>대기업 생산직</a>
+    <a href="#certs"><svg class="i"><use href="#ic-award"/></svg>자격증 정리</a>
+    <a href="#favorites"><svg class="i"><use href="#ic-star"/></svg>즐겨찾기<span class="cnt" id="fav-n"></span></a>
+    <a href="#guide"><svg class="i"><use href="#ic-cap"/></svg>취업 준비 안내</a>
+  </nav>
+</div></header>
+
+<div class="page gut">
+  <aside>
+    <div class="total"><div class="ic"><svg class="i"><use href="#ic-bag"/></svg></div><div><small id="total-label">접수 중인 공고</small><strong id="total">0<span>건</span></strong><span class="upd" id="upd">불러오는 중…</span></div></div>
+    <nav class="sectors" aria-label="분류별 보기"><h2>분류별 보기</h2><div id="cat-list" style="display:contents"></div></nav>
+    <div class="tip" id="tip"></div>
+  </aside>
+
+  <main id="main">
+    <section id="view-list">
+      <div class="filters">
+        <label class="field search"><svg class="i"><use href="#ic-search"/></svg><input id="q" type="search" placeholder="기관명, 직무로 검색 (예: 전기, 기계, 철도)" aria-label="검색"></label>
+        <label class="field"><svg class="i"><use href="#ic-pin"/></svg><select id="f-region" aria-label="근무지"><option value="">근무지 전체</option></select></label>
+        <label class="field"><svg class="i"><use href="#ic-bag"/></svg><select id="f-hire" aria-label="고용형태"><option value="">고용형태 전체</option><option>정규직</option><option>무기계약</option><option>채용형인턴</option><option>체험형인턴</option><option>계약직</option></select></label>
+        <label class="field"><svg class="i"><use href="#ic-list"/></svg><select id="f-sort" aria-label="정렬"><option value="end">마감 빠른 순</option><option value="new">최근 올라온 순</option><option value="org">기관 이름 순</option></select></label>
+        <button class="reset" id="reset" type="button" aria-label="조건 초기화" title="조건 초기화"><svg class="i"><use href="#ic-refresh"/></svg></button>
+      </div>
+      <div class="cert-bar" id="cert-bar" hidden><svg class="i"><use href="#ic-award"/></svg><span><b id="cert-bar-name"></b> 이(가) 공고문에 나온 공고를 공공기관·기업 구분 없이 모았어요.</span><button type="button" id="cert-clear">자격증 목록으로</button></div>
+      <div class="status"><div id="count"></div></div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section id="view-certs" hidden>
+      <div class="panel">
+        <h2>공고에 나온 자격증 정리</h2>
+        <p id="cert-sum">불러오는 중…</p>
+        <div class="filters cfilters">
+          <label class="field search"><svg class="i"><use href="#ic-search"/></svg><input id="cq" type="search" placeholder="자격증 이름 검색 (예: 용접, 공조, 전기)" aria-label="자격증 검색"></label>
+          <label class="field"><svg class="i"><use href="#ic-list"/></svg><select id="cfield" aria-label="분야"><option value="">분야 전체</option></select></label>
+        </div>
+        <div class="legend"><span><i class="p1"></i>공공기관 공고</span><span><i class="p2"></i>대기업·중견 공고</span><span>막대가 길수록 많은 공고에 나온 자격증이에요. 누르면 해당 공고를 모아 봅니다.</span></div>
+        <div class="cert-list" id="cert-list"></div>
+        <p class="mini-note">공고문 글에서 자동으로 찾은 이름이라 필수 자격인지 가산점인지는 공고마다 달라요. 공공기관은 자격증 가점표를 첨부파일(PDF·HWP)에만 넣는 경우가 많아 실제보다 적게 잡힐 수 있어요.</p>
+      </div>
+    </section>
+
+    <section id="view-guide" hidden>
+      <div class="panel">
+        <h2>공공기관 고졸 채용, 이렇게 준비해요</h2>
+        <p>대부분의 공공기관은 NCS(국가직무능력표준) 기반으로 뽑습니다. 공고가 뜨고 마감까지 보통 2주 정도라서, 미리 준비해 두는 것이 중요합니다.</p>
+        <ol class="steps">
+          <li><b>공고 확인</b>이 페이지에서 관심 기관을 즐겨찾기하고 마감일을 챙겨요.</li>
+          <li><b>직무기술서 읽기</b>공고에 붙은 직무기술서로 하는 일과 필요한 자격증을 확인해요.</li>
+          <li><b>자격증 준비</b>전기·기계·용접·공조냉동 등 기능사 자격증은 가산점이 되는 경우가 많아요.</li>
+          <li><b>입사지원서</b>학교생활·실습 경험을 직무와 연결해 자기소개서를 써요.</li>
+          <li><b>필기시험(NCS)</b>의사소통·수리·문제해결 영역 문제를 꾸준히 풀어 봐요.</li>
+          <li><b>면접</b>실습 경험, 안전 의식, 협동 경험을 구체적으로 말할 수 있게 연습해요.</li>
+        </ol>
+        <h3 class="sub">함께 보면 좋은 사이트</h3>
+        <div class="links">
+          <a href="https://job.alio.go.kr/" target="_blank" rel="noopener"><b>잡알리오 <svg class="i"><use href="#ic-out"/></svg></b><small>공공기관 채용정보 공식 사이트(이 페이지의 원본)</small></a>
+          <a href="https://job.cleaneye.go.kr/" target="_blank" rel="noopener"><b>클린아이 잡플러스 <svg class="i"><use href="#ic-out"/></svg></b><small>지방공기업·출자출연기관 채용 공고</small></a>
+          <a href="https://www.ncs.go.kr/" target="_blank" rel="noopener"><b>NCS 국가직무능력표준 <svg class="i"><use href="#ic-out"/></svg></b><small>직무기술서·능력단위 찾아보기</small></a>
+          <a href="https://www.work24.go.kr/" target="_blank" rel="noopener"><b>고용24 <svg class="i"><use href="#ic-out"/></svg></b><small>민간·공공 채용정보와 취업 지원 제도</small></a>
+        </div>
+      </div>
+    </section>
+
+    <p class="foot" id="foot">자료 출처: 공공기관은 재정경제부 공공기관 경영정보 공개시스템(잡알리오), 대기업·중견기업은 고용노동부 고용24 채용정보. 이 페이지는 공고를 자동으로 모아 보여 주는 안내용입니다. 지원 자격, 마감 시각, 제출 서류는 반드시 기관의 원문 공고에서 다시 확인하세요.</p>
+  </main>
+</div>
+
+<div class="overlay" id="overlay" hidden><div class="drawer" role="dialog" aria-modal="true" aria-labelledby="d-title" id="drawer"></div></div>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ic=n=>`<svg class="i"><use href="#${n}"/></svg>`;
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+let PUB=[],PRI=[],view='',cat='all',certSel='',favs=new Set(store.get('jobs-favs',[]));
+const today=(()=>{const d=new Date(Date.now()+9*3600e3);return d.toISOString().slice(0,10)})();
+const days=e=>e?Math.round((Date.parse(e)-Date.parse(today))/864e5):null;
+const recent=j=>{const d=days(j.start);return d!==null&&d>=-2&&d<=0};
+const short=s=>(s||'').replace(/^20/,'').replace(/-/g,'.');
+const regionsOf=j=>String(j.region||'').split(/[,\/·]|\s외\s*\d+/).map(s=>s.trim().split(' ')[0]).filter(Boolean);
+const soon=j=>{const d=days(j.end);return d!==null&&d<=7};
+
+// 자격증 분야 나누기
+const FIELDS=[
+  ['전기·전자',/전기|전자|통신|전파|승강기|반도체|계측|철도신호/],
+  ['기계·용접',/기계|용접|정비|설비|금형|판금|선반|밀링|CNC|생산자동화|자동차|배관|주조|공유압/],
+  ['공조·에너지',/공조|냉동|에너지|보일러|가스|위험물|열관리|신재생/],
+  ['안전·환경',/안전|소방|환경|위생|수질|대기|폐기물|인간공학/],
+  ['운전·장비',/운전|면허|지게차|굴착기|기중기|크레인/],
+  ['정보·사무',/정보|컴퓨터|워드|사무|한국사|ITQ|GTQ|빅데이터|전산|회계/],
+];
+const fieldOf=c=>(FIELDS.find(([,re])=>re.test(c))||['기타'])[0];
+
+const VIEWS={
+  list:{title:'공공기관 고졸 공고',src:()=>PUB,tip:'<b>특성화·고졸 전형</b>은 제목이나 응시자격에 특성화고·마이스터고·고졸 전형 등의 표현이 있는 공고입니다. <b>고졸 가산점 우대</b>는 우대조건에 고졸자가 들어 있는 공고, <b>고졸 지원 가능</b>은 학력 조건에 고졸(또는 학력무관)이 포함된 공고입니다.',
+    cats:[
+      {id:'all',name:'전체 공고',icon:'ic-list',f:()=>true},
+      {id:'sp',name:'특성화·고졸 전형',icon:'ic-cap',f:j=>j.track==='특성화'},
+      {id:'pref',name:'고졸 가산점 우대',icon:'ic-star',f:j=>(j.tags||[]).includes('고졸우대')},
+      {id:'reg',name:'정규직·무기계약',icon:'ic-bag',f:j=>(j.tags||[]).some(t=>t==='정규직'||t==='무기계약')},
+      {id:'cert',name:'자격증 언급 공고',icon:'ic-award',f:j=>(j.certs||[]).length>0},
+      {id:'soon',name:'마감 임박 (7일)',icon:'ic-clock',f:soon},
+      {id:'new',name:'새로 올라온 공고',icon:'ic-spark',f:recent},
+    ],hire:['정규직','무기계약','채용형인턴','체험형인턴','계약직']},
+  private:{title:'대기업·중견 생산·기술직',src:()=>PRI,tip:'고용24에 올라온 <b>대기업·중견기업</b> 공고 중 학력 조건에 <b>고졸</b>이 있고, 제목이 생산·설비·정비·전기·기계·품질 같은 기술직인 공고만 모았습니다. 회사 채용 홈페이지에만 올리는 공채나 학교 추천 채용은 빠질 수 있어요.',
+    cats:[
+      {id:'all',name:'전체 공고',icon:'ic-list',f:()=>true},
+      {id:'big',name:'대기업',icon:'ic-bank',f:j=>j.companyType==='대기업'},
+      {id:'mid',name:'중견기업',icon:'ic-factory',f:j=>j.companyType==='중견기업'},
+      {id:'new1',name:'신입 가능',icon:'ic-cap',f:j=>/신입|관계없음|무관/.test(j.career||'')},
+      {id:'cert',name:'자격증 언급 공고',icon:'ic-award',f:j=>(j.certs||[]).length>0},
+      {id:'soon',name:'마감 임박 (7일)',icon:'ic-clock',f:soon},
+      {id:'new',name:'새로 올라온 공고',icon:'ic-spark',f:recent},
+    ],hire:['대기업','중견기업']},
+};
+
+function renderCats(){
+  const v=VIEWS[view];
+  if(!v){$('#cat-list').innerHTML='';return}
+  $('#cat-list').innerHTML=v.cats.map(c=>`<button type="button" data-cat="${c.id}" aria-pressed="${c.id===cat}">${ic(c.icon)}${c.name}<span class="n">${v.src().filter(c.f).length}</span></button>`).join('');
+}
+function baseList(){
+  if(view==='favorites')return [...PUB,...PRI].filter(j=>favs.has(j.uid));
+  if(view==='cert')return [...PUB,...PRI].filter(j=>(j.certs||[]).includes(certSel));
+  const v=VIEWS[view];const c=v.cats.find(x=>x.id===cat)||v.cats[0];
+  return v.src().filter(c.f);
+}
+function filtered(){
+  const q=$('#q').value.trim().toLowerCase(),r=$('#f-region').value,h=$('#f-hire').value,sort=$('#f-sort').value;
+  const list=baseList().filter(j=>{
+    if(q&&!`${j.org} ${j.title} ${j.ncs||''} ${j.job||''} ${j.region||''} ${(j.certs||[]).join(' ')}`.toLowerCase().includes(q))return false;
+    if(r&&!regionsOf(j).includes(r))return false;
+    if(h&&!((j.tags||[]).includes(h)||j.companyType===h))return false;
+    return true;
+  });
+  const by={end:(a,b)=>(a.end||'9').localeCompare(b.end||'9'),new:(a,b)=>(b.start||'').localeCompare(a.start||''),org:(a,b)=>a.org.localeCompare(b.org,'ko')}[sort];
+  return list.sort(by);
+}
+function ddayChip(j){
+  const d=days(j.end);if(d===null)return '';
+  const cls=d<=3?'hot':d<=7?'warn':'';
+  return `<span class="dday ${cls}">${d===0?'오늘 마감':'D-'+d}</span>`;
+}
+const trackChip=j=>j.kind==='pri'?`<span class="chip ${j.companyType==='대기업'?'sp':''}">${esc(j.companyType)}</span>`:(j.track==='특성화'?'<span class="chip sp">특성화·고졸 전형</span>':'<span class="chip">고졸 지원 가능</span>');
+const certChips=(j,n)=>{const c=j.certs||[];if(!c.length)return '';const s=c.slice(0,n).map(x=>`<span class="chip cert">${ic('ic-award')}${esc(x)}</span>`).join('');return s+(c.length>n?`<span class="chip cert">+${c.length-n}</span>`:'')};
+function card(j){
+  const fav=favs.has(j.uid);
+  const rows=j.kind==='pri'
+    ?[['ic-pin','근무지',j.region||'공고 참조'],['ic-coin','급여',j.pay||'회사내규'],['ic-users','경력·학력',[j.career,j.education].filter(Boolean).join(' · ')||'-']]
+    :[['ic-pin','근무지',j.region||'공고문 참조'],['ic-bag','고용형태',j.hireType||'-'],['ic-users','채용인원',j.headcount?j.headcount+'명':'공고문 참조']];
+  return `<article class="card" tabindex="0" data-id="${esc(j.uid)}">
+    <div class="c-head"><div class="org"><span class="mk" aria-hidden="true">${esc((j.org||'?').replace(/^(한국|주식회사|\(주\)|㈜)/,'').trim().charAt(0))}</span><span>${esc(j.org)}</span></div>${ddayChip(j)}</div>
+    <h3>${esc(j.title)}</h3>
+    <div class="c-body">${rows.map(([i,k,v])=>`<span class="lbl">${ic(i)}${k}</span><span class="val">${esc(v)}</span>`).join('')}</div>
+    <div class="c-foot">
+      ${trackChip(j)}
+      ${(j.tags||[]).includes('고졸우대')?'<span class="chip">고졸 우대</span>':''}
+      ${recent(j)?'<span class="chip new">NEW</span>':''}
+      ${certChips(j,2)}
+      <span class="chip">${ic('ic-cal')}~ ${short(j.end)||'채용시'}</span>
+      <button type="button" class="mini fav" data-fav="${esc(j.uid)}" aria-pressed="${fav}" aria-label="즐겨찾기">${ic('ic-star')}${fav?'저장됨':'저장'}</button>
+    </div>
+  </article>`;
+}
+function renderList(){
+  const list=filtered();
+  const label=view==='favorites'?'즐겨찾기':view==='cert'?`<b>${esc(certSel)}</b> 관련 공고`:'';
+  $('#count').innerHTML=label?`${label} <b>${list.length}</b>건`:`<b>${list.length}</b>건 표시 중`;
+  $('#cert-bar').hidden=view!=='cert';
+  if(view==='cert')$('#cert-bar-name').textContent=certSel;
+  let html='';
+  if(!list.length){
+    html=`<div class="empty">${view==='favorites'?'아직 저장한 공고가 없어요. 카드의 ☆ 저장 버튼을 눌러 보세요.':'조건에 맞는 공고가 없어요. 검색어나 필터를 바꿔 보세요.'}</div>`;
+  }else if(view==='list'&&cat==='all'){
+    const sp=list.filter(j=>j.track==='특성화'),hs=list.filter(j=>j.track!=='특성화');
+    if(sp.length)html+=`<h2 class="sec-title">특성화·고졸 전형<span>${sp.length}건 · 고졸 전형이 따로 있거나 특성화고 대상인 공고</span></h2>`+sp.map(card).join('');
+    if(hs.length)html+=`<h2 class="sec-title">고졸 지원 가능<span>${hs.length}건 · 학력 조건에 고졸이 포함된 공고</span></h2>`+hs.map(card).join('');
+  }else if(view==='cert'||view==='favorites'){
+    const a=list.filter(j=>j.kind==='pub'),b=list.filter(j=>j.kind==='pri');
+    if(a.length)html+=`<h2 class="sec-title">공공기관<span>${a.length}건</span></h2>`+a.map(card).join('');
+    if(b.length)html+=`<h2 class="sec-title">대기업·중견기업<span>${b.length}건</span></h2>`+b.map(card).join('');
+  }else html=list.map(card).join('');
+  $('#grid').innerHTML=html;
+}
+function renderCerts(){
+  const m={};
+  for(const j of PUB)for(const c of j.certs||[])(m[c]??={pub:0,pri:0}).pub++;
+  for(const j of PRI)for(const c of j.certs||[])(m[c]??={pub:0,pri:0}).pri++;
+  const q=$('#cq').value.trim().toLowerCase(),fsel=$('#cfield').value;
+  let rows=Object.entries(m).map(([name,v])=>({name,...v,total:v.pub+v.pri,field:fieldOf(name)}));
+  const fcount={};rows.forEach(r=>fcount[r.field]=(fcount[r.field]||0)+1);
+  if(!$('#cfield').dataset.ready){$('#cfield').insertAdjacentHTML('beforeend',[...FIELDS.map(f=>f[0]),'기타'].filter(f=>fcount[f]).map(f=>`<option>${f}</option>`).join(''));$('#cfield').dataset.ready=1}
+  rows=rows.filter(r=>(!q||r.name.toLowerCase().includes(q))&&(!fsel||r.field===fsel)).sort((a,b)=>b.total-a.total||a.name.localeCompare(b.name,'ko'));
+  const max=Math.max(1,...rows.map(r=>r.total));
+  const withCert=[...PUB,...PRI].filter(j=>(j.certs||[]).length).length;
+  $('#cert-sum').innerHTML=`전체 공고 ${PUB.length+PRI.length}건 중 <b>${withCert}</b>건의 공고문에서 자격증 <b>${Object.keys(m).length}</b>종류를 찾았어요.`;
+  $('#cert-list').innerHTML=rows.length?rows.map(r=>`<button type="button" class="cert-row" data-cert="${esc(r.name)}">
+    <span class="cn"><b>${esc(r.name)}</b><small>${r.field}</small></span>
+    <span class="cbar" aria-hidden="true"><i class="p1" style="width:${r.pub/max*100}%"></i><i class="p2" style="width:${r.pri/max*100}%"></i></span>
+    <span class="cc">${r.total}건<small>공공 ${r.pub} · 기업 ${r.pri}</small></span></button>`).join(''):'<div class="empty">찾는 자격증이 없어요.</div>';
+}
+function openDetail(uid){
+  const j=[...PUB,...PRI].find(x=>x.uid===uid);if(!j)return;
+  const kv=(k,v)=>v?`<div class="kv"><span>${k}</span><span>${esc(v)}</span></div>`:'';
+  const certs=(j.certs||[]).length?`<div class="panel"><h3>공고문에서 찾은 자격증</h3><p class="mini-note">자동으로 찾은 목록이에요. 필수인지 우대인지는 원문에서 확인하세요. 누르면 같은 자격증이 나온 공고를 모아 봅니다.</p><div class="chips">${j.certs.map(c=>`<button type="button" class="chip cert" data-cert="${esc(c)}">${ic('ic-award')}${esc(c)}</button>`).join('')}</div></div>`:'';
+  const info=j.kind==='pri'
+    ?kv('기업형태',j.companyType)+kv('모집직종',j.job)+kv('근무지',j.region)+kv('급여',j.pay)+kv('경력',j.career)+kv('학력',j.education)+kv('모집인원',j.headcount?j.headcount+'명':'')+kv('등록일',j.start)+kv('마감일',j.end)+kv('자격면허',j.licence)+kv('정보제공',j.source)
+    :kv('접수기간',`${j.start||'?'} ~ ${j.end||'?'}`)+kv('근무지',j.region)+kv('고용형태',j.hireType)+kv('채용구분',j.recruitType)+kv('학력조건',j.education)+kv('채용인원',j.headcount?j.headcount+'명':'')+kv('직무(NCS)',j.ncs);
+  const body=j.kind==='pri'
+    ?(j.summary?`<div class="panel"><h3>모집 내용 (요약)</h3><div>${esc(j.summary)}</div></div>`:'')+(j.preference?`<div class="panel"><h3>우대 사항</h3><div>${esc(j.preference)}</div></div>`:'')
+    :(j.qualification?`<div class="panel"><h3>응시자격 (요약)</h3><div>${esc(j.qualification)}</div></div>`:'')+(j.preference?`<div class="panel"><h3>우대 사항 (요약)</h3><div>${esc(j.preference)}</div></div>`:'');
+  const links=j.kind==='pri'
+    ?`<a href="${esc(j.url)}" target="_blank" rel="noopener">${ic('ic-out')}고용24에서 보기</a>`
+    :`<a href="${esc(j.alioUrl)}" target="_blank" rel="noopener">${ic('ic-out')}잡알리오에서 보기</a>${/^https?:/.test(j.url||'')?`<a class="sec" href="${esc(j.url)}" target="_blank" rel="noopener">${ic('ic-out')}기관 홈페이지 공고</a>`:''}`;
+  $('#drawer').innerHTML=`<div class="d-top">${trackChip(j)}<button class="close" type="button" id="close">닫기</button></div>
+    <h2 id="d-title">${esc(j.title)}</h2>
+    <div class="d-org">${esc(j.org)} ${ddayChip(j)}</div>
+    <div class="d-kv">${info}</div>${certs}${body}
+    <div class="note">위 내용은 자동으로 모은 요약입니다. 지원 전 원문 공고와 첨부 공고문에서 자격과 마감 시각을 꼭 확인하세요.</div>
+    <div class="acts">${links}</div>`;
+  $('#overlay').hidden=false;$('#close').focus();
+}
+function closeDetail(){$('#overlay').hidden=true}
+function setFilterOptions(){
+  const opts=(VIEWS[view]||{hire:['정규직','무기계약','대기업','중견기업']}).hire;
+  $('#f-hire').innerHTML='<option value="">'+(view==='private'?'기업형태 전체':'고용형태 전체')+'</option>'+opts.map(o=>`<option>${o}</option>`).join('');
+  const cnt={};(VIEWS[view]?VIEWS[view].src():[...PUB,...PRI]).forEach(j=>regionsOf(j).forEach(r=>cnt[r]=(cnt[r]||0)+1));
+  $('#f-region').innerHTML='<option value="">근무지 전체</option>'+Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]).map(r=>`<option value="${esc(r)}">${esc(r)} (${cnt[r]})</option>`).join('');
+}
+function updateTotals(){
+  const v=VIEWS[view];
+  const src=v?v.src():[...PUB,...PRI];
+  $('#total-label').textContent=v?v.title:'전체 공고';
+  $('#total').innerHTML=`${src.length}<span>건</span>`;
+  $('#tip').innerHTML=v?v.tip:'공공기관과 대기업·중견기업 공고를 함께 보여 줍니다. 자격증 이름은 공고문 글에서 자동으로 찾은 것이라 빠지거나 잘못 잡힌 것이 있을 수 있어요.';
+  $('.sectors').hidden=!v;
+}
+function route(){
+  const h=(location.hash||'#list').slice(1);
+  let next=['list','private','favorites','certs','guide','cert'].includes(h)?h:'list';
+  if(next==='cert'&&!certSel){location.hash='#certs';return}
+  if(next!==view){view=next;cat='all';$('#q').value='';setFilterOptions()}
+  const isList=!['certs','guide'].includes(view);
+  $('#view-list').hidden=!isList;$('#view-guide').hidden=view!=='guide';$('#view-certs').hidden=view!=='certs';
+  document.querySelectorAll('.nav a').forEach(a=>{const t=a.getAttribute('href').slice(1);if(t===view||(view==='cert'&&t==='certs'))a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+  updateTotals();renderCats();
+  if(isList)renderList();
+  if(view==='certs')renderCerts();
+  $('#fav-n').textContent=favs.size||'';
+}
+
+document.addEventListener('click',e=>{
+  const f=e.target.closest('[data-fav]');
+  if(f){e.stopPropagation();const id=f.dataset.fav;favs.has(id)?favs.delete(id):favs.add(id);store.set('jobs-favs',[...favs]);route();return}
+  const ce=e.target.closest('[data-cert]');
+  if(ce){certSel=ce.dataset.cert;closeDetail();if(location.hash==='#cert'){view='';route()}else location.hash='#cert';window.scrollTo(0,0);return}
+  const c=e.target.closest('[data-cat]');
+  if(c){cat=c.dataset.cat;route();return}
+  if(e.target.closest('#cert-clear')){location.hash='#certs';return}
+  const k=e.target.closest('.card');if(k){openDetail(k.dataset.id);return}
+  if(e.target.id==='overlay'||e.target.id==='close')closeDetail();
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeDetail();
+  if(e.key==='Enter'&&e.target.classList&&e.target.classList.contains('card'))openDetail(e.target.dataset.id);
+});
+['q','f-region','f-hire','f-sort'].forEach(id=>$('#'+id).addEventListener('input',renderList));
+['cq','cfield'].forEach(id=>$('#'+id).addEventListener('input',renderCerts));
+$('#reset').addEventListener('click',()=>{$('#q').value='';$('#f-region').value='';$('#f-hire').value='';$('#f-sort').value='end';cat='all';route()});
+addEventListener('hashchange',route);
+
+const load=u=>fetch(u,{cache:'no-store'}).then(r=>r.ok?r.json():{jobs:[]}).catch(()=>({jobs:[]}));
+Promise.all([load('data/jobs.json'),load('data/private.json')]).then(([a,b])=>{
+  PUB=(a.jobs||[]).map(j=>({...j,kind:'pub',uid:'p'+j.id}));
+  PRI=(b.jobs||[]).map(j=>({...j,kind:'pri',uid:'w'+j.id,org:j.company}));
+  const t=[a.updatedAt,b.updatedAt].filter(Boolean).sort().pop();
+  $('#upd').textContent=t?`${new Date(t).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'})} 마지막 반영 · 매일 7시·18시 확인`:'자료를 불러오지 못했어요';
+  route();
+});
+})();
+</script>
+</body>
+</html>

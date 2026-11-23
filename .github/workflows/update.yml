@@ -1,0 +1,72 @@
+name: 채용공고판 자동 수집
+
+# 수집 → 바뀐 자료 저장(커밋) → 같은 실행 안에서 GitHub Pages에 바로 배포
+# (자동 실행이 한 커밋은 '브랜치에서 배포' 방식의 Pages 빌드를 띄우지 않기 때문에, 배포를 여기서 직접 합니다.)
+# 저장소 Settings → Pages → Source 를 "GitHub Actions" 로 두어야 합니다.
+
+on:
+  schedule:
+    # 매일 07:00, 18:00 (한국시간) = 22:00, 09:00 (UTC)
+    - cron: '0 22 * * *'
+    - cron: '0 9 * * *'
+  workflow_dispatch: {}   # Actions 탭에서 [Run workflow] 버튼으로 바로 실행
+  push:                   # 페이지나 수집기를 고쳐 올렸을 때도 바로 반영
+    branches: [main]
+    paths: ['docs/**', 'scripts/**', '.github/workflows/**']
+
+permissions:
+  contents: write   # 수집한 자료를 저장소에 커밋
+  pages: write      # Pages 배포
+  id-token: write   # Pages 배포 인증
+
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+jobs:
+  collect-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 공공기관 공고 수집
+        continue-on-error: true   # 한쪽이 실패해도 다른 쪽과 배포는 계속
+        env:
+          # 공공데이터포털 인증키(Decoding 키). 저장소 Settings → Secrets 에만 보관
+          DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
+        run: node scripts/collect.mjs
+
+      - name: 대기업·중견기업 생산직 공고 수집
+        continue-on-error: true
+        run: node scripts/collect-private.mjs
+
+      - name: 바뀐 내용이 있으면 저장
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/*.json
+          if git diff --cached --quiet; then
+            echo "변경 없음"
+          else
+            git commit -m "채용공고 자동 업데이트 $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M')"
+            git pull --rebase --autostash || true
+            git push
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Pages에 배포
+        id: deploy
+        uses: actions/deploy-pages@v4
