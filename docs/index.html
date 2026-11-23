@@ -495,7 +495,7 @@ Promise.all([load('data/jobs.json'),load('data/private.json')]).then(([a,b])=>{
   PUB=(a.jobs||[]).map(j=>({...j,kind:'pub',uid:'p'+j.id}));
   PRI=(b.jobs||[]).map(j=>({...j,kind:'pri',uid:'w'+j.id,org:j.company}));
   const t=[a.updatedAt,b.updatedAt].filter(Boolean).sort().pop();
-  $('#upd').textContent=t?`${new Date(t).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'})} 마지막 반영 · 매일 7시·18시 확인`:'자료를 불러오지 못했어요';
+  $('#upd').textContent=t?`${new Date(t).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'})} 마지막 반영 · 매일 아침·저녁 자동 확인`:'자료를 불러오지 못했어요';
   route();
 });
 })();

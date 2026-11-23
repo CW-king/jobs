@@ -6,9 +6,10 @@ name: 채용공고판 자동 수집
 
 on:
   schedule:
-    # 매일 07:00, 18:00 (한국시간) = 22:00, 09:00 (UTC)
-    - cron: '0 22 * * *'
-    - cron: '0 9 * * *'
+    # 매일 06:37, 17:37 (한국시간) = 21:37, 08:37 (UTC)
+    # 정각(0분)은 GitHub 예약이 몰려 자주 늦어지거나 건너뛰므로 일부러 비켜 둠
+    - cron: '37 21 * * *'
+    - cron: '37 8 * * *'
   workflow_dispatch: {}   # Actions 탭에서 [Run workflow] 버튼으로 바로 실행
   push:                   # 페이지나 수집기를 고쳐 올렸을 때도 바로 반영
     branches: [main]
