@@ -31,7 +31,7 @@ jobs:
     timeout-minutes: 30
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deploy1.outputs.page_url || steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v5
 
@@ -69,6 +69,17 @@ jobs:
         with:
           path: docs
 
+      # GitHub Pages 배포가 가끔 "try again later"로 일시 실패해서, 1분 뒤 한 번 더 시도
       - name: Pages에 배포
+        id: deploy1
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+
+      - name: 잠시 기다림(배포 재시도 전)
+        if: steps.deploy1.outcome == 'failure'
+        run: sleep 60
+
+      - name: Pages에 배포(재시도)
         id: deploy
+        if: steps.deploy1.outcome == 'failure'
         uses: actions/deploy-pages@v4
