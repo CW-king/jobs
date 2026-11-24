@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>진학 정보판</title>
+<meta name="description" content="특성화고(기계·방산설비) 학생을 위한 대학 진학 길, 대학·학과별 전형, 입시 달력을 한곳에 모았습니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Black+Han+Sans&display=swap">
+<style>
+:root{
+  --bg:#f6f8fc;--surface:#ffffff;--surface-2:#eff3fa;--line:#d6e0ee;--line-soft:#e6edf6;
+  --ink:#0f2547;--ink-2:#3b5172;--muted:#64768f;
+  --navy:#0a2c5c;--navy-2:#123f7d;--on-navy:#ffffff;--on-navy-2:#c9daf3;
+  --gold:#ffd23f;--on-gold:#0a2c5c;--accent:#1556b8;--accent-soft:#e6efff;--accent-ink:#0f4ba3;
+  --hot:#c8322f;--hot-soft:#fde8e7;--warn:#a86200;--warn-soft:#fff1d6;--ok:#17804b;--ok-soft:#e2f5ea;
+  --shadow:0 2px 10px rgba(16,42,84,.07);--shadow-h:0 10px 26px rgba(16,42,84,.16);--scrim:rgba(6,18,38,.5);
+  --f-display:"Black Han Sans","IBM Plex Sans KR","Malgun Gothic",sans-serif;
+  --f-body:"IBM Plex Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+  --tabbar:64px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0b1424;--surface:#13203a;--surface-2:#1a2a47;--line:#2a3d60;--line-soft:#22334f;
+  --ink:#e8eefa;--ink-2:#b4c3dc;--muted:#8899b6;--navy:#071d3d;--navy-2:#0e2f5f;--on-navy-2:#a9c1e6;
+  --accent:#7aa8ff;--accent-soft:#1d3560;--accent-ink:#a9c6ff;
+  --hot:#ff7a72;--hot-soft:#4a1f22;--warn:#ffc163;--warn-soft:#45330f;--ok:#6fd59c;--ok-soft:#163b2a;
+  --shadow:0 2px 10px rgba(0,0,0,.3);--shadow-h:0 10px 26px rgba(0,0,0,.45);--scrim:rgba(0,0,0,.6);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b1424;--surface:#13203a;--surface-2:#1a2a47;--line:#2a3d60;--line-soft:#22334f;
+  --ink:#e8eefa;--ink-2:#b4c3dc;--muted:#8899b6;--navy:#071d3d;--navy-2:#0e2f5f;--on-navy-2:#a9c1e6;
+  --accent:#7aa8ff;--accent-soft:#1d3560;--accent-ink:#a9c6ff;
+  --hot:#ff7a72;--hot-soft:#4a1f22;--warn:#ffc163;--warn-soft:#45330f;--ok:#6fd59c;--ok-soft:#163b2a;
+  --shadow:0 2px 10px rgba(0,0,0,.3);--shadow-h:0 10px 26px rgba(0,0,0,.45);--scrim:rgba(0,0,0,.6);color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+a{color:var(--accent-ink)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* 상단 */
+.top{background:linear-gradient(100deg,var(--navy),var(--navy-2));color:var(--on-navy);position:sticky;top:0;z-index:20}
+.top-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand svg{width:30px;height:30px;stroke-width:1.7}
+.brand h1{font-family:var(--f-display);font-weight:400;font-size:24px;margin:0;line-height:1.15}
+.brand h1 em{font-style:normal;color:var(--gold)}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{display:flex;align-items:center;gap:6px;color:var(--on-navy);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600;font-size:15px}
+.nav a:hover{background:rgba(255,255,255,.12)}
+.nav a[aria-current="page"]{background:var(--on-navy);color:var(--navy)}
+.jobs-link{margin-left:auto;display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.4);color:var(--on-navy);text-decoration:none;border-radius:10px;padding:7px 11px;font-size:14px;font-weight:700;white-space:nowrap}
+.nav+.jobs-link{margin-left:8px}
+
+/* 하단 탭바(휴대폰) */
+.tabbar{display:none}
+@media (max-width:760px){
+  .nav{display:none}
+  body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom,0px))}
+  .tabbar{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:0;right:0;bottom:0;z-index:25;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -4px 16px rgba(16,42,84,.08)}
+  .tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;height:var(--tabbar);text-decoration:none;color:var(--muted);font-size:12.5px;font-weight:700}
+  .tabbar a svg{width:24px;height:24px}
+  .tabbar a[aria-current="page"]{color:var(--accent-ink)}
+  .tabbar a[aria-current="page"] svg{stroke-width:2.4}
+}
+
+main{max-width:1100px;margin:0 auto;padding-block:18px 40px}
+.view{display:flex;flex-direction:column;gap:16px}
+h2.title{margin:0;font-size:22px;line-height:1.35}
+.lead{margin:-8px 0 0;color:var(--ink-2)}
+
+/* 한 줄 알림 */
+.pill-note{display:flex;gap:10px;align-items:center;width:100%;text-align:left;border:0;border-radius:14px;padding:12px 14px;font-size:15px;font-weight:600;background:var(--ok-soft);color:var(--ink)}
+.pill-note svg{color:var(--ok)}
+.pill-note.warn{background:var(--warn-soft)}.pill-note.warn svg{color:var(--warn)}
+.pill-note .more{margin-left:auto;color:var(--accent-ink);font-size:14px;white-space:nowrap}
+
+/* 진학 길: 큰 버튼 타일 */
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.tile{display:flex;flex-direction:column;align-items:flex-start;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:18px;padding:16px;box-shadow:var(--shadow);text-align:left;min-height:150px;transition:transform .15s,box-shadow .15s,border-color .15s}
+.tile:hover{transform:translateY(-2px);box-shadow:var(--shadow-h);border-color:var(--accent)}
+.tile .ic{width:46px;height:46px;border-radius:14px;background:var(--navy-2);color:var(--gold);display:grid;place-items:center}
+.tile .ic svg{width:24px;height:24px}
+.tile b{font-size:17px;line-height:1.3}
+.tile small{color:var(--ink-2);font-size:14px;line-height:1.45}
+.tile .cnt{margin-top:auto;font-size:13px;font-weight:700;color:var(--accent-ink)}
+.tile.star{border:2px solid var(--gold)}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.quick a{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;text-decoration:none;color:var(--ink);font-weight:700;box-shadow:var(--shadow)}
+.quick a svg{color:var(--accent)}
+.quick a span{margin-left:auto;color:var(--muted)}
+
+/* 대학 찾기 */
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:14px;color:var(--ink-2);pointer-events:none}
+.search input{width:100%;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:13px 14px 13px 44px;font-size:16px;box-shadow:var(--shadow)}
+.chips-wrap{display:flex;flex-direction:column;gap:8px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+.chips .lab{flex:none;align-self:center;font-size:13px;font-weight:700;color:var(--muted);min-width:34px}
+.chip{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:999px;padding:8px 14px;font-size:15px;font-weight:700;white-space:nowrap}
+.chip .n{font-size:12.5px;color:var(--muted);margin-left:3px;font-weight:600}
+.chip[aria-pressed="true"]{background:var(--navy-2);border-color:var(--navy-2);color:var(--on-navy)}
+.chip[aria-pressed="true"] .n{color:var(--on-navy-2)}
+.status{display:flex;justify-content:space-between;align-items:center;gap:8px;color:var(--ink-2);font-size:15px}
+.status b{color:var(--ink)}
+.status button{border:0;background:none;color:var(--accent-ink);font-weight:700;font-size:14px;padding:4px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.c-head{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.univ{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--accent-ink);font-size:15px;min-width:0}
+.univ .mk{width:30px;height:30px;border-radius:9px;background:var(--navy-2);color:var(--on-navy);display:grid;place-items:center;font-family:var(--f-display);font-size:15px;flex:none}
+.univ .rg{color:var(--muted);font-weight:600;font-size:13px}
+.tag{flex:none;display:inline-block;border-radius:8px;padding:3px 9px;font-size:12.5px;font-weight:700;background:var(--surface-2);color:var(--ink-2);white-space:nowrap}
+.tag.gold{background:var(--gold);color:var(--on-gold)}
+.tag.ok{background:var(--ok-soft);color:var(--ok)}
+.tag.warn{background:var(--warn-soft);color:var(--warn)}
+.tag.blue{background:var(--accent-soft);color:var(--accent-ink)}
+.card h3{margin:0;font-size:18px;line-height:1.4}
+.facts{display:flex;flex-wrap:wrap;gap:6px}
+.fact{display:inline-flex;align-items:center;gap:5px;border-radius:10px;padding:5px 10px;font-size:14px;font-weight:700;background:var(--surface-2);color:var(--ink)}
+.fact small{font-weight:600;color:var(--muted);font-size:12.5px}
+.fact.good{background:var(--ok-soft);color:var(--ok)}
+.fact.bad{background:var(--warn-soft);color:var(--warn)}
+details.more{border-top:1px solid var(--line-soft);padding-top:8px}
+details.more summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:700;font-size:14.5px;color:var(--accent-ink);padding:4px 0}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary svg{transition:transform .2s}
+details.more[open] summary svg{transform:rotate(180deg)}
+dl.kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;margin:8px 0 6px;font-size:14.5px}
+dl.kv dt{color:var(--muted);font-weight:600;white-space:nowrap}
+dl.kv dd{margin:0;overflow-wrap:anywhere}
+.note{font-size:14px;color:var(--ink);background:var(--warn-soft);border-radius:10px;padding:8px 10px;margin:0}
+.src{display:inline-flex;align-items:center;gap:4px;font-size:13.5px;font-weight:700;text-decoration:none;margin-top:6px}
+.empty{grid-column:1/-1;background:var(--surface);border:1px dashed var(--line);border-radius:16px;padding:32px;text-align:center;color:var(--ink-2)}
+
+/* 달력 */
+.next{background:linear-gradient(100deg,var(--navy),var(--navy-2));color:var(--on-navy);border-radius:18px;padding:16px 18px;display:flex;gap:14px;align-items:center}
+.next .d{font-family:var(--f-display);font-size:30px;line-height:1;color:var(--gold);white-space:nowrap}
+.next small{display:block;color:var(--on-navy-2);font-weight:600;font-size:13px}
+.next b{font-size:17px}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
+.seg button{border:0;background:none;padding:12px 8px;font-weight:700;font-size:15px;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--navy-2);color:var(--on-navy)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:6px 18px}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:104px minmax(0,1fr);gap:12px;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+.tl li:last-child{border-bottom:0}
+.tl .when{font-weight:700;font-size:16px;color:var(--accent-ink);line-height:1.3}
+.tl .when small{display:block;font-size:12.5px;color:var(--muted);font-weight:600}
+.tl b{display:block;font-size:16px}
+.tl p{margin:2px 0 0;color:var(--ink-2);font-size:14.5px}
+.tl li.key .when{color:var(--hot)}
+.tl li.past{opacity:.55}
+
+/* 준비 */
+.acc{display:flex;flex-direction:column;gap:10px}
+.acc details{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:16px;font-weight:700;font-size:17px}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary .ic{width:38px;height:38px;border-radius:12px;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center;flex:none}
+.acc summary .chev{margin-left:auto;transition:transform .2s;color:var(--muted)}
+.acc details[open] summary .chev{transform:rotate(180deg)}
+.acc ul{margin:0;padding:0 18px 6px 40px;color:var(--ink);font-size:15.5px}
+.acc li{margin:6px 0}
+.acc .s{padding:0 18px 16px;font-size:13.5px;color:var(--muted)}
+
+/* 서랍(진학 길 자세히) */
+.scrim{position:fixed;inset:0;background:var(--scrim);z-index:40}
+.sheet{position:fixed;z-index:41;background:var(--surface);box-shadow:var(--shadow-h);display:flex;flex-direction:column;max-height:88vh;overflow:auto;left:50%;top:50%;transform:translate(-50%,-50%);width:min(560px,calc(100vw - 32px));border-radius:20px}
+.sheet .sh{display:flex;align-items:center;gap:12px;padding:18px 18px 8px}
+.sheet .sh .ic{width:46px;height:46px;border-radius:14px;background:var(--navy-2);color:var(--gold);display:grid;place-items:center;flex:none}
+.sheet h3{margin:0;font-size:20px;line-height:1.3}
+.sheet .who{font-size:14px;color:var(--muted);font-weight:600}
+.sheet .x{margin-left:auto;border:0;background:var(--surface-2);border-radius:10px;width:40px;height:40px;display:grid;place-items:center;flex:none}
+.sheet .bd{padding:4px 18px 8px;display:flex;flex-direction:column;gap:10px}
+.sheet .bd p{margin:0;font-size:16px}
+.sheet ul{margin:0;padding-left:20px;font-size:15.5px}
+.sheet li{margin:5px 0}
+.sheet .ft{position:sticky;bottom:0;background:var(--surface);padding:12px 18px calc(16px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line-soft)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:0;border-radius:14px;padding:14px;font-size:16px;font-weight:700;background:var(--navy-2);color:var(--on-navy)}
+@media (max-width:760px){.sheet{left:0;right:0;bottom:0;top:auto;transform:none;width:100%;border-radius:20px 20px 0 0}}
+
+footer{max-width:1100px;margin:0 auto;padding-block:0 32px;color:var(--muted);font-size:13.5px}
+
+@media (max-width:980px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){
+  .tiles{grid-template-columns:1fr 1fr;gap:10px}
+  .tile{min-height:0;padding:14px}
+  .tile small{display:none}
+  .tile b{font-size:16px}
+  .quick{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  .brand h1{font-size:22px}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in gut">
+  <div class="brand">
+    <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
+    <h1><em>진학</em> 정보판</h1>
+  </div>
+  <nav class="nav" aria-label="메뉴">
+    <a href="#paths">진학 길</a><a href="#univ">대학 찾기</a><a href="#calendar">입시 달력</a><a href="#prepare">준비하기</a>
+  </nav>
+  <a class="jobs-link" href="../">채용공고판 ↗</a>
+</div></header>
+
+<main class="gut">
+  <!-- 진학 길 -->
+  <section class="view" id="v-paths">
+    <h2 class="title">나는 어떤 길로 대학에 갈까?</h2>
+    <p class="lead">궁금한 길을 눌러 보세요.</p>
+    <button class="pill-note" id="rule-btn"><svg class="i" viewBox="0 0 24 24"><path d="M12 8v4M12 16h.01"/><circle cx="12" cy="12" r="9"/></svg><span>2028학년도부터 '같은 계열' 기준이 바뀌어요</span><span class="more">자세히</span></button>
+    <div class="tiles" id="tiles"></div>
+    <div class="quick">
+      <a href="#univ"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>대학·학과 찾기<span>›</span></a>
+      <a href="#calendar"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>언제 뭘 해야 하지?<span>›</span></a>
+      <a href="#prepare"><svg class="i" viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>지금 준비할 것<span>›</span></a>
+    </div>
+  </section>
+
+  <!-- 대학 찾기 -->
+  <section class="view" id="v-univ" hidden>
+    <h2 class="title">대학·학과 찾기</h2>
+    <label class="search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="대학이나 학과 이름 (예: 한밭대, 기계)" enterkeyhint="search"></label>
+    <div class="chips-wrap">
+      <div class="chips" id="c-kind" role="group" aria-label="전형"></div>
+      <div class="chips" id="c-region" role="group" aria-label="지역"></div>
+    </div>
+    <button class="pill-note warn" id="year-btn"><svg class="i" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span>2027학년도 모집요강 기준이에요</span><span class="more">왜?</span></button>
+    <div class="status" id="status"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- 달력 -->
+  <section class="view" id="v-calendar" hidden>
+    <h2 class="title">입시 달력</h2>
+    <div class="seg" role="group" aria-label="학년" id="seg"></div>
+    <div class="next" id="next"></div>
+    <div class="panel"><ul class="tl" id="tl"></ul></div>
+  </section>
+
+  <!-- 준비 -->
+  <section class="view" id="v-prepare" hidden>
+    <h2 class="title">지금 준비할 것</h2>
+    <div class="acc" id="acc"></div>
+  </section>
+</main>
+<footer class="gut" id="foot"></footer>
+
+<nav class="tabbar" aria-label="아래 메뉴">
+  <a href="#paths"><svg class="i" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>진학 길</a>
+  <a href="#univ"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>대학 찾기</a>
+  <a href="#calendar"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>입시 달력</a>
+  <a href="#prepare"><svg class="i" viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>준비하기</a>
+</nav>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" hidden></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const CHEV='<svg class="i" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>';
+let D=null;const st={kind:'',region:'',q:''};
+const KIND_TAG={'특성화고특별':'gold','재직자':'ok','국방':'warn','지역인재':'blue'};
+const VIEWS=['paths','univ','calendar','prepare'];
+
+function showView(){
+  const h=(location.hash||'#paths').slice(1);
+  const v=VIEWS.includes(h)?h:'paths';
+  VIEWS.forEach(id=>$('#v-'+id).hidden=id!==v);
+  document.querySelectorAll('.nav a,.tabbar a').forEach(a=>{if(a.getAttribute('href')==='#'+v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+  closeSheet();window.scrollTo(0,0);
+}
+
+/* 서랍 */
+function openSheet(html){$('#sheet').innerHTML=html;$('#sheet').hidden=false;$('#scrim').hidden=false;document.body.style.overflow='hidden';$('#sheet .x')?.focus()}
+function closeSheet(){$('#sheet').hidden=true;$('#scrim').hidden=true;document.body.style.overflow=''}
+$('#scrim').addEventListener('click',closeSheet);
+addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+const X='<button class="x" aria-label="닫기"><svg class="i" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>';
+$('#sheet').addEventListener('click',e=>{
+  if(e.target.closest('.x'))return closeSheet();
+  const g=e.target.closest('[data-go]');if(!g)return;
+  const f=JSON.parse(g.dataset.go);st.kind=f.kind||'';st.region='';st.q='';st.type=f.type||'';$('#q').value='';
+  location.hash='#univ';renderUniv();
+});
+
+function countFor(f){return D.univs.filter(u=>Object.entries(f).every(([k,v])=>u[k]===v)).length}
+function renderPaths(){
+  $('#tiles').innerHTML=D.paths.map((p,i)=>{const n=p.filter?countFor(p.filter):0;return `<button class="tile ${i===0?'star':''}" data-i="${i}">
+    <span class="ic"><svg class="i" viewBox="0 0 24 24">${p.icon}</svg></span><b>${esc(p.name)}</b><small>${esc(p.who)}</small>${n?`<span class="cnt">전형 ${n}개 ›</span>`:''}</button>`}).join('');
+  $('#tiles').addEventListener('click',e=>{const t=e.target.closest('.tile');if(!t)return;const p=D.paths[t.dataset.i];const n=p.filter?countFor(p.filter):0;
+    openSheet(`<div class="sh"><span class="ic"><svg class="i" viewBox="0 0 24 24">${p.icon}</svg></span><div><h3>${esc(p.name)}</h3><div class="who">${esc(p.who)}</div></div>${X}</div>
+    <div class="bd"><div>${p.tags.map(t=>`<span class="tag ${esc(t.c||'')}">${esc(t.t)}</span>`).join(' ')}</div><p>${esc(p.desc)}</p><ul>${p.points.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
+    ${n?`<div class="ft"><button class="btn" data-go='${esc(JSON.stringify(p.filter))}'>이 길로 갈 수 있는 대학 ${n}개 보기 →</button></div>`:''}`)});
+  $('#rule-btn').addEventListener('click',()=>{const r=D.rule;openSheet(`<div class="sh"><div><h3>같은 계열 기준이 바뀌어요</h3><div class="who">2028학년도 입시부터</div></div>${X}</div>
+    <div class="bd"><p>${esc(r.text)}</p><ul><li>예전: 우리 학과 이름이 대학이 정한 '기준학과' 목록에 있어야 했어요.</li><li>2028부터: 내가 <b>24학점 이상</b> 들은 전문교과의 <b>교과(군)</b>(예: 기계)으로 판단해요.</li><li>방산설비과 학생은 기계 교과(군)을 몇 학점 들었는지 담임 선생님께 확인하세요.</li></ul><p class="src" style="font-weight:500">출처: <a href="${esc(r.source)}" target="_blank" rel="noopener">${esc(r.sourceName)}</a></p></div>`)});
+}
+
+/* 대학 찾기 */
+function chipRow(el,label,key,vals){
+  const all=[['',`전체`]].concat(vals.map(v=>[v,v]));
+  el.innerHTML=`<span class="lab">${label}</span>`+all.map(([v,t])=>`<button class="chip" data-k="${key}" data-v="${esc(v)}">${esc(KL[t]||t)}${v?`<span class="n">${D.univs.filter(u=>u[key]===v).length}</span>`:''}</button>`).join('');
+}
+const KL={'특성화고특별':'특성화고 전형','학생부종합':'학생부종합','지역인재':'지역인재','학생부교과':'학생부교과','재직자':'재직자','국방':'국방·계약','일반':'전문대 일반'};
+function syncChips(){document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',st[c.dataset.k]===c.dataset.v))}
+function renderUniv(){
+  syncChips();
+  const q=st.q.trim().toLowerCase();
+  const list=D.univs.filter(u=>(!st.kind||u.kind===st.kind)&&(!st.region||u.region===st.region)&&(!st.type||u.type===st.type)&&(!q||[u.univ,u.dept,u.track,u.note].join(' ').toLowerCase().includes(q)));
+  const filtered=st.kind||st.region||st.type||q;
+  $('#status').innerHTML=`<span><b>${list.length}</b>개 전형 · 대학 ${new Set(list.map(u=>u.univ)).size}곳${st.type?` · ${esc(st.type)}`:''}</span>${filtered?'<button id="reset">초기화</button>':''}`;
+  $('#grid').innerHTML=list.length?list.map(card).join(''):`<div class="empty">조건에 맞는 전형이 없어요. 다른 버튼을 눌러 보세요.</div>`;
+}
+function card(u){
+  const csat=u.csat_min||'';const noCsat=/^없음/.test(csat);
+  const facts=[
+    u.quota?`<span class="fact"><small>인원</small>${esc(u.quota)}</span>`:'',
+    u.method?`<span class="fact"><small>방법</small>${esc(shortMethod(u.method))}</span>`:'',
+    csat?(noCsat?`<span class="fact good">수능최저 없음</span>`:/수능 100/.test(csat)?`<span class="fact bad">수능 100%</span>`:`<span class="fact bad">수능최저 있음</span>`):''
+  ].join('');
+  const rows=[['전형',u.track],['뽑는 방법',u.method],['수능최저',u.csat_min],['일정',u.timeline],['지원자격',u.eligibility]].filter(r=>r[1]);
+  return `<article class="card">
+    <div class="c-head"><div class="univ"><span class="mk">${esc(u.univ[0])}</span><span>${esc(u.univ)} <span class="rg">${esc(u.region)}</span></span></div><span class="tag ${KIND_TAG[u.kind]||''}">${esc(KL[u.kind]||u.kind)}</span></div>
+    <h3>${esc(u.dept)}</h3>
+    ${facts?`<div class="facts">${facts}</div>`:''}
+    ${u.note?`<p class="note">${esc(u.note)}</p>`:''}
+    <details class="more"><summary>자세히 보기 ${CHEV}</summary>
+      ${rows.length?`<dl class="kv">${rows.map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`:'<p>세부 내용은 모집요강에서 확인하세요.</p>'}
+      ${u.source?`<a class="src" href="${esc(u.source)}" target="_blank" rel="noopener">${esc(u.year)}학년도 모집요강 보기 ↗</a>`:''}
+    </details>
+  </article>`;
+}
+function shortMethod(m){m=String(m);if(m.length<=14)return m;if(/면접/.test(m))return /서류/.test(m)?'서류+면접':'교과+면접';if(/^서류/.test(m))return '서류';if(/^교과/.test(m))return '교과(내신)';if(/수능/.test(m))return '수능';return m.slice(0,12)+'…'}
+document.addEventListener('click',e=>{
+  const c=e.target.closest('.chip');if(c){st[c.dataset.k]=st[c.dataset.k]===c.dataset.v&&c.dataset.v?'':c.dataset.v;renderUniv();return}
+  if(e.target.closest('#reset')){st.kind=st.region=st.type=st.q='';$('#q').value='';renderUniv()}
+});
+
+/* 달력 */
+function parseWhen(w){const m=String(w).match(/(\d{4})\.(\d{1,2})(?:\.(\d{1,2}))?/);return m?new Date(+m[1],+m[2]-1,+(m[3]||28)):null}
+function renderCalendar(g){
+  const c=D.calendars.find(x=>x.grade===g)||D.calendars[0];
+  $('#seg').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.g===c.grade));
+  const now=new Date();let nextI=c.items.findIndex(i=>{const d=parseWhen(i.when);return d&&d>=now});
+  const n=c.items[nextI];
+  $('#next').innerHTML=n?`<div class="d">${esc(n.when)}</div><div><small>다음으로 챙길 일</small><b>${esc(n.what)}</b></div>`:'';
+  $('#next').hidden=!n;
+  $('#tl').innerHTML=c.items.map((i,k)=>`<li class="${i.key?'key':''} ${k<nextI?'past':''}"><div class="when">${esc(i.when)}<small>${esc(i.sub||'')}</small></div><div><b>${esc(i.what)}</b>${i.detail?`<p>${esc(i.detail)}</p>`:''}</div></li>`).join('');
+}
+
+/* 준비 */
+const PREP_IC=['<path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-6"/>','<path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/>','<path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/>','<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/>'];
+function renderPrepare(){
+  $('#acc').innerHTML=D.prepare.map((p,i)=>`<details ${i===0?'open':''}><summary><span class="ic"><svg class="i" viewBox="0 0 24 24">${PREP_IC[i%PREP_IC.length]}</svg></span>${esc(p.title)}<span class="chev">${CHEV}</span></summary><ul>${p.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>${p.source?`<div class="s">출처: <a href="${esc(p.source)}" target="_blank" rel="noopener">${esc(p.sourceName||'원문')}</a></div>`:'<div class="s"></div>'}</details>`).join('');
+}
+
+fetch('data.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{
+  D=d;
+  renderPaths();
+  const uniq=f=>[...new Set(D.univs.map(f))].filter(Boolean);
+  chipRow($('#c-kind'),'전형','kind',uniq(u=>u.kind));
+  chipRow($('#c-region'),'지역','region',['대전','충남','충북','서울','경기','인천'].filter(r=>D.univs.some(u=>u.region===r)).concat(uniq(u=>u.region).filter(r=>!['대전','충남','충북','서울','경기','인천'].includes(r))));
+  $('#q').addEventListener('input',e=>{st.q=e.target.value;renderUniv()});
+  $('#year-btn').addEventListener('click',()=>openSheet(`<div class="sh"><div><h3>왜 2027학년도 기준이에요?</h3><div class="who">대학 자료 안내</div></div>${X}</div><div class="bd"><p>${esc(D.univNote)}</p><p>카드의 '자세히 보기'를 누르면 그 대학 모집요강 원문 링크가 있어요.</p></div>`));
+  renderUniv();
+  $('#seg').innerHTML=D.calendars.map(c=>`<button data-g="${esc(c.grade)}">${esc(c.label)}</button>`).join('');
+  $('#seg').addEventListener('click',e=>{const b=e.target.closest('button');if(b)renderCalendar(b.dataset.g)});
+  renderCalendar(D.calendars[0].grade);
+  renderPrepare();
+  $('#foot').innerHTML=`자료 기준일 ${esc(D.updatedAt)} · 입시 정보는 해마다 바뀌니 지원 전에 꼭 모집요강 원문을 확인하세요. · <a href="https://www.adiga.kr" target="_blank" rel="noopener">대입정보포털 어디가</a> · <a href="https://www.procollege.kr" target="_blank" rel="noopener">전문대학포털</a>`;
+  showView();
+}).catch(()=>{$('main').innerHTML='<div class="empty">자료를 불러오지 못했어요.</div>'});
+addEventListener('hashchange',showView);
+</script>
+</body>
+</html>

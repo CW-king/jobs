@@ -1,0 +1,1194 @@
+{
+ "updatedAt": "2026-11-24",
+ "rule": {
+  "title": "2028학년도부터 바뀌는 점:",
+  "text": "특성화고 전형의 '같은 계열' 판단이 학과 이름이 아니라, 내가 24학점 이상 들은 전문교과의 교과(군)(예: 기계)으로 바뀌어요. 기계 교과(군)을 24학점 이상 들었다면 대학이 '기계'를 인정하는 학과에 지원할 수 있어요.",
+  "source": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf",
+  "sourceName": "대교협 2028학년도 대학입학전형기본사항 보도자료(2025.8.28)"
+ },
+ "univNote": "아래 내용은 2027학년도(올해) 모집요강 기준이에요. 여러분이 지원할 2028·2029학년도에는 인원·방법이 바뀔 수 있고, 같은 계열 기준도 ‘기준학과·30단위’에서 ‘교과(군) 24학점’으로 바뀌어요. 지원 전에 꼭 그해 모집요강을 확인하세요.",
+ "paths": [
+  {
+   "name": "특성화고 특별전형",
+   "who": "특성화고 졸업(예정)자만 지원 · 정원 외 선발",
+   "icon": "<path d='M12 3 2 8l10 5 10-5-10-5Z'/><path d='M6 10.5V16c3 2 9 2 12 0v-5.5'/>",
+   "tags": [
+    {
+     "t": "가장 유리",
+     "c": "gold"
+    },
+    {
+     "t": "같은 계열 학과만"
+    }
+   ],
+   "desc": "특성화고 학생끼리만 경쟁하는 전형이에요. 대학이 정한 '같은 계열' 학과에만 지원할 수 있어요.",
+   "points": [
+    "2028부터: 기계 교과(군) 24학점 이상 → 대학이 ‘기계’를 인정하는 학과에 지원",
+    "충청권은 교과(내신)·서류 위주이고 수능최저가 거의 없어요",
+    "수도권은 정시(수능 100%)로만 뽑는 대학이 늘고 있어요 → 수능(직업탐구)도 준비",
+    "학과당 1~3명으로 적으니 여러 대학을 함께 보세요"
+   ],
+   "filter": {
+    "kind": "특성화고특별"
+   }
+  },
+  {
+   "name": "학생부종합 (일반전형)",
+   "who": "일반고·특성화고 모두 지원",
+   "icon": "<path d='M7 3h8l4 4v14H7z'/><path d='M15 3v4h4M10 12h6M10 16h6'/>",
+   "tags": [
+    {
+     "t": "서류·면접"
+    }
+   ],
+   "desc": "학생부(활동·과제·동아리·진로)를 보고 뽑아요. 전공 관련 활동이 많은 특성화고 학생에게 기회가 될 수 있어요.",
+   "points": [
+    "지원자격에 '특성화고 제외'가 없는지 꼭 확인",
+    "학생부교과 전형은 특성화고 지원을 막는 대학이 많아요",
+    "실습·프로젝트·자격 준비 과정이 학생부에 남도록 하세요"
+   ],
+   "filter": {
+    "kind": "학생부종합"
+   }
+  },
+  {
+   "name": "지역인재 전형",
+   "who": "그 지역 고교 졸업(예정)자",
+   "icon": "<path d='M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11Z'/><circle cx='12' cy='10' r='2.5'/>",
+   "tags": [
+    {
+     "t": "대전·충청권"
+    }
+   ],
+   "desc": "충청권 대학이 지역 고교 졸업생을 따로 뽑는 전형이에요. 지역 범위와 특성화고 지원 가능 여부는 대학마다 달라요.",
+   "points": [
+    "우리 학교는 대전 소재 → 대전·충청권 대학 지역인재 전형 확인",
+    "교과형·종합형이 있어요. 교과형은 특성화고 제한이 있는지 확인"
+   ],
+   "filter": {
+    "kind": "지역인재"
+   }
+  },
+  {
+   "name": "전문대학·폴리텍",
+   "who": "2~3년 실무 중심 · 기계·용접·공조·부사관 학과",
+   "icon": "<path d='M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z'/>",
+   "tags": [
+    {
+     "t": "실무 중심"
+    }
+   ],
+   "desc": "현장 기술을 더 깊게 배우고 빨리 취업하는 길이에요. 특성화고 전형이나 동일계열 우대가 있는 학교가 많아요.",
+   "points": [
+    "졸업 후 전공심화(학사학위) 과정으로 이어갈 수도 있어요",
+    "한국폴리텍대학은 기능사·산업기사 연계 실습이 강해요"
+   ],
+   "filter": {
+    "type": "전문대"
+   }
+  },
+  {
+   "name": "선취업 후진학 (재직자 전형)",
+   "who": "특성화고 졸업 후 산업체에서 일정 기간 이상 재직한 사람",
+   "icon": "<rect x='3' y='7' width='18' height='13' rx='2'/><path d='M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'/>",
+   "tags": [
+    {
+     "t": "일하면서 학위",
+     "c": "ok"
+    }
+   ],
+   "desc": "먼저 취업해서 경력을 쌓은 뒤, 일하면서 다닐 수 있는 학과(주말·야간 등)에 들어가는 길이에요. 수능 없이 서류·면접으로 뽑는 곳이 많아요.",
+   "points": [
+    "대부분 산업체 근무 3년(1,095일) 이상이 조건이에요",
+    "근무 기간 계산법(고3 2학기·군 복무 인정 여부)은 대학마다 달라요",
+    "야간·주말 수업이 많아 일하면서 다닐 수 있어요"
+   ],
+   "filter": {
+    "kind": "재직자"
+   }
+  },
+  {
+   "name": "국방·부사관·계약학과",
+   "who": "군 기술 부사관, 국방 관련 학과",
+   "icon": "<path d='M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z'/>",
+   "tags": [
+    {
+     "t": "방산 연계",
+     "c": "warn"
+    }
+   ],
+   "desc": "방산설비과 전공과 바로 이어지는 길이에요. 졸업 후 임관하는 군 협약 학과, 기업과 연계된 계약학과 등이 있어요.",
+   "points": [
+    "건양대 방위산업공학: 방산기업 채용 연계, 등록금 50% 기업 지원",
+    "아주대(공군)·한양대 ERICA(해군) 계약학과: 졸업 후 장교 임관·의무 복무",
+    "전문대 부사관 학과: 신체 기준과 면접이 있어요"
+   ],
+   "filter": {
+    "kind": "국방"
+   }
+  }
+ ],
+ "calendars": [
+  {
+   "grade": "g2",
+   "label": "지금 2학년 (2028 입시)",
+   "items": [
+    {
+     "when": "2026.4.30",
+     "sub": "발표됨",
+     "what": "2028학년도 대학별 입학전형 시행계획 발표",
+     "detail": "대학별 전형 이름·모집인원·전형방법의 큰 틀이 나왔어요."
+    },
+    {
+     "when": "2027.3~",
+     "sub": "3학년",
+     "what": "내 전문교과 이수 학점 확인",
+     "detail": "기계 등 어떤 교과(군)을 24학점 이상 들었는지 담임 선생님과 확인하세요."
+    },
+    {
+     "when": "2027.5",
+     "sub": "보통 5월",
+     "what": "2028학년도 수시 모집요강 발표",
+     "detail": "학과별 모집인원·같은 계열 교과(군)·면접일이 확정돼요."
+    },
+    {
+     "when": "2027.8월 말",
+     "what": "수능 모의평가(하반기)",
+     "detail": "성적을 받은 뒤 수시 원서 접수가 시작돼요."
+    },
+    {
+     "when": "2027.9.20~",
+     "sub": "시작일",
+     "what": "수시모집 원서 접수",
+     "detail": "4년제 대학은 최대 6번까지 지원할 수 있어요(전문대학은 횟수 제한 없음).",
+     "key": true
+    },
+    {
+     "when": "2027.10~11",
+     "what": "면접 등 대학별 고사",
+     "detail": "지원한 대학끼리 면접 날짜가 겹치지 않는지 미리 확인하세요."
+    },
+    {
+     "when": "2027.11",
+     "sub": "보통 셋째 주",
+     "what": "수능",
+     "detail": "직업탐구는 '성공적인 직업생활' 한 과목이에요."
+    },
+    {
+     "when": "2027.12.10",
+     "sub": "예정",
+     "what": "수능 성적 통지",
+     "detail": "수능최저가 있는 전형은 이후 합격이 확정돼요."
+    },
+    {
+     "when": "2027.12~2028.2",
+     "what": "정시모집·추가모집",
+     "detail": "정시에도 특성화고 전형이 있는 대학이 있어요."
+    }
+   ]
+  },
+  {
+   "grade": "g1",
+   "label": "지금 1학년 (2029 입시)",
+   "items": [
+    {
+     "when": "2027.4~5",
+     "sub": "보통",
+     "what": "2029학년도 대학별 시행계획 발표",
+     "detail": "관심 대학의 특성화고 전형 모집인원을 확인하세요."
+    },
+    {
+     "when": "2027 (2학년)",
+     "what": "전공 활동 쌓기",
+     "detail": "실습 과제·프로젝트·자격증 준비 과정이 학생부에 남도록 하세요."
+    },
+    {
+     "when": "2028.3~",
+     "sub": "3학년",
+     "what": "전문교과 24학점 이수 교과(군) 확인",
+     "detail": "지원할 학과가 인정하는 교과(군)과 맞는지 확인하세요."
+    },
+    {
+     "when": "2028.5",
+     "sub": "보통",
+     "what": "2029학년도 수시 모집요강 발표"
+    },
+    {
+     "when": "2028.9",
+     "sub": "보통",
+     "what": "수시모집 원서 접수",
+     "key": true
+    },
+    {
+     "when": "2028.11",
+     "sub": "보통",
+     "what": "수능"
+    },
+    {
+     "when": "2028.12~2029.2",
+     "what": "정시모집·추가모집"
+    }
+   ]
+  }
+ ],
+ "prepare": [
+  {
+   "title": "내신(학생부 성적)",
+   "items": [
+    "2028학년도부터 내신은 5등급제예요(1등급 10%, 2등급 누적 34% …).",
+    "전문교과도 성취도(A~E)와 등급(1~5)이 함께 기록돼요.",
+    "특성화고 전형은 교과(내신) 비중이 큰 곳이 많아요."
+   ],
+   "source": "https://files-scs.pstatic.net/2024/07/02/Ic4S8r8egU/[교육부+12-27(수)+브리핑시(11시)+보도자료]+(별첨)+미래+사회를+대비하는+2028+대학입시제도+개편+확정안.pdf",
+   "sourceName": "교육부 2028 대학입시제도 개편 확정안(2023.12.27)"
+  },
+  {
+   "title": "같은 계열(동일계열) 확인",
+   "items": [
+    "대학 모집요강에서 학과마다 인정하는 교과(군)을 확인하세요.",
+    "내가 그 교과(군)의 전문교과를 24학점 이상 들었으면 인정돼요.",
+    "학교가 우리 학과에 제시한 교과(군)과 달라도, 직접 24학점 이상 이수했다면 인정돼요."
+   ],
+   "source": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf",
+   "sourceName": "대교협 2028학년도 대학입학전형기본사항"
+  },
+  {
+   "title": "수능을 본다면",
+   "items": [
+    "2028 수능부터 선택과목이 없어져요.",
+    "직업탐구 영역은 '성공적인 직업생활' 한 과목이에요.",
+    "수능최저가 없는 특성화고 전형도 많으니 지원할 대학 조건부터 확인하세요."
+   ],
+   "source": "https://files-scs.pstatic.net/2024/07/02/Ic4S8r8egU/[교육부+12-27(수)+브리핑시(11시)+보도자료]+(별첨)+미래+사회를+대비하는+2028+대학입시제도+개편+확정안.pdf",
+   "sourceName": "교육부 2028 대학입시제도 개편 확정안"
+  },
+  {
+   "title": "서류·면접 준비 (방산설비과 강점)",
+   "items": [
+    "용접·배관·공조냉동·전산응용기계제도 등 실습 경험을 구체적으로 말할 수 있게 정리하세요.",
+    "자격증 준비 과정에서 배운 점, 어려웠던 점과 해결한 방법을 기록해 두세요.",
+    "방산·기계 분야에 관심 갖게 된 계기와 대학에서 더 배우고 싶은 것을 연결하세요."
+   ]
+  }
+ ],
+ "univs": [
+  {
+   "univ": "충남대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "기계공학교육과(사범대)",
+   "track": "학생부종합Ⅲ(특성화고출신자전형)",
+   "kind": "특성화고특별",
+   "quota": "3명",
+   "method": "1단계 서류100(3배수), 2단계 서류200+면접100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 12월 면접",
+   "eligibility": "기계과·냉동공조과·산업설비과 등 동일계열 또는 관련 전문교과 30단위 이상(2027 기준)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/충남대학교/충남대학교_2027학년도_수시모집요강.pdf",
+   "note": "공대 기계공학부는 특성화고 전형으로 뽑지 않아요. 사범대 기계공학교육과·기술교육과만 해당돼요.",
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "한밭대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "기계공학과",
+   "track": "특성화고교졸업자전형(정원외)",
+   "kind": "특성화고특별",
+   "quota": "1명",
+   "method": "교과90+출결10",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": "기계과·냉동공조과·산업설비과 등 동일계열 또는 관련 전문교과 30단위 이상(2027 기준)",
+   "year": "2027",
+   "source": "https://addon.jinhakapply.com/Nesin/3004/2027/download/한밭대_수시_모집요강.pdf",
+   "note": null,
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "충북대",
+   "region": "충북",
+   "type": "4년제",
+   "dept": "기계공학부",
+   "track": "특성화고출신자전형(학생부교과)",
+   "kind": "특성화고특별",
+   "quota": "1명",
+   "method": "교과100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": "기계과·자동차과·항공과 등 또는 관련 전문교과 30단위 이상(2027 기준). 냉동공조과·산업설비과는 목록에 없음",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/충북대학교/충북대학교_2027학년도_수시모집요강.pdf",
+   "note": "신소재공학과·안전공학과(각 1명)도 기계과를 인정해요.",
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "공주대",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "기계자동차공학부·미래자동차공학과(천안공대)",
+   "track": "학생부종합 특성화고교졸업자전형(정원외)",
+   "kind": "특성화고특별",
+   "quota": "기계자동차 2명, 미래자동차 1명",
+   "method": "서류100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": "천안공대는 모든 전문교과 교과(군)을 인정(2027 기준)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/국립공주대학교/국립공주대학교_2027학년도_수시모집요강.pdf",
+   "note": "학생부종합 전형은 1번만 지원할 수 있어 일반전형과 함께 낼 수 없어요.",
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "한국기술교육대(코리아텍)",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "기계공학부·메카트로닉스공학부",
+   "track": "학생부종합 특성화고졸업자전형(정원외)",
+   "kind": "특성화고특별",
+   "quota": "기계 2명, 메카트로닉스 2명",
+   "method": "서류100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음, 11월 발표",
+   "eligibility": "기계과·산업설비과·냉동공조과 등 또는 관련 전문교과 30단위 이상(2027 기준)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한국기술교육대학교/한국기술교육대학교_2027학년도_수시모집요강.pdf",
+   "note": null,
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "순천향대",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "기계공학과·스마트자동차학과",
+   "track": "특성화고교졸업자전형(정원외)",
+   "kind": "특성화고특별",
+   "quota": "학과별 3명 이내",
+   "method": "교과100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": "기계과·냉동공조과·산업설비과 등 또는 관련 전문교과 30단위 이상(2027 기준)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/순천향대학교/순천향대학교_2027학년도_수시모집요강.pdf",
+   "note": "전형 전체 30명을 함께 뽑아요.",
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "호서대",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "기계공학과·지능로봇학과·미래자동차공학과",
+   "track": "특성화고교졸업자전형(정원외)",
+   "kind": "특성화고특별",
+   "quota": "학과 묶음별 통합 선발(6~7명)",
+   "method": "교과100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": "동일계열 조견표(입시 홈페이지) 또는 관련 전문교과 30단위 이상(2027 기준)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/호서대학교/호서대학교_2027학년도_수시모집요강.pdf",
+   "note": "기계 계열 인정 학과 목록은 호서대 입시 홈페이지에서 확인하세요.",
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "선문대",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "기계공학과·미래자동차공학부·지능로봇공학과",
+   "track": "특성화고교졸업자전형(정원외)",
+   "kind": "특성화고특별",
+   "quota": "학과별 인원 미지정(전체 17명)",
+   "method": "교과100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": "기계과·냉동공조과 등 또는 관련 전문교과 30단위 이상(2027 기준)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/선문대학교/선문대학교_2027학년도_수시모집요강.pdf",
+   "note": null,
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "한남대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "기계공학과",
+   "track": "특성화고교출신자전형(정원외)",
+   "kind": "특성화고특별",
+   "quota": "5명 이내",
+   "method": "교과100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": "기계과·냉동공조과 등 또는 동일계열 인정서(전문교과 30단위 이상)(2027 기준)",
+   "year": "2027",
+   "source": "https://ibsi.hannam.ac.kr/upload/GUIDES/20260529180909001.pdf",
+   "note": "산업정보공학과(3명 이내)는 산업설비과·기계과·냉동공조과를 인정해요.",
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "우송대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "철도차량시스템학과",
+   "track": "특성화고교졸업자(정원외)",
+   "kind": "특성화고특별",
+   "quota": "최대 8명",
+   "method": "교과90+출결10",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": "기계과·냉동공조과 등 또는 관련 전문교과 30단위 이상(2027 기준)",
+   "year": "2027",
+   "source": "https://ent.wsu.ac.kr/site/ent/popup/2027susi.pdf",
+   "note": "우송대에는 기계공학과가 없어요. 철도전기시스템·철도자율전공학부도 기계과·냉동공조과를 인정해요.",
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "대전대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "소방방재학과",
+   "track": "특성화고교졸업자전형(정원외)",
+   "kind": "특성화고특별",
+   "quota": "5명 이내",
+   "method": "교과90+출결10",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": "산업설비과·기계과·냉동공조과 등 또는 관련 전문교과 30학점 이상(2027 기준)",
+   "year": "2027",
+   "source": "https://ipsi.dju.ac.kr/upload/GUIDES/2027_rolling.pdf",
+   "note": "대전대에는 기계 계열 학과가 없어요. 설비·안전 쪽으로 이어지는 대안이에요.",
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "목원대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "전기전자공학과",
+   "track": "특성화고교졸업자전형(정원외)",
+   "kind": "특성화고특별",
+   "quota": "3명 이내",
+   "method": "교과100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": "관련 전문교과 30단위 이상 + 학교장 추천서(2027 기준). 기계과 인정, 냉동공조과는 목록에 없음",
+   "year": "2027",
+   "source": "https://enter.mokwon.ac.kr/_prog/download/?file_id=jxua1ik09j8jbmfvs4fy3wkrs2bizp",
+   "note": "목원대에는 기계 계열 학과가 없어요.",
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "건국대",
+   "region": "서울",
+   "type": "4년제",
+   "dept": "기계로봇자동차공학부·항공우주모빌리티공학과",
+   "track": "학생부종합(특성화고교졸업자)(정원외)",
+   "kind": "특성화고특별",
+   "quota": "학과당 1명",
+   "method": "서류70+교과30",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음, 12월 발표",
+   "eligibility": "기계과·냉동공조과·산업설비과 등 또는 전문교과 30학점 이상 + 학교장 확인서(2027 기준)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/건국대학교/건국대학교_2027학년도_수시모집요강.pdf",
+   "note": "수시에서 못 뽑은 인원은 정시 특성화고 전형으로 넘어가요.",
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "한국공학대",
+   "region": "경기",
+   "type": "4년제",
+   "dept": "기계공학과·기계설계·지능형모빌리티·메카트로닉스·AI로봇",
+   "track": "학생부교과(특성화고교졸업자)(정원외)",
+   "kind": "특성화고특별",
+   "quota": "학과별 1명",
+   "method": "교과100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": "기계과·냉동공조과 등 또는 관련 전문교과 30단위 이상(2027 기준). 산업설비과는 목록에 없음",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%ED%95%9C%EA%B5%AD%EA%B3%B5%ED%95%99%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EA%B5%AD%EA%B3%B5%ED%95%99%EB%8C%80%ED%95%99%EA%B5%90_2027%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95.pdf",
+   "note": null,
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "한양대 ERICA",
+   "region": "경기",
+   "type": "4년제",
+   "dept": "기계공학과",
+   "track": "정시 특성화고교졸업자 특별전형(정원외)",
+   "kind": "특성화고특별",
+   "quota": "3명",
+   "method": "수능100(직업탐구 반영 가능)",
+   "csat_min": "수능 100% 전형",
+   "timeline": "1월 정시 원서",
+   "eligibility": "기계과·냉동공조과·산업설비과 등 또는 관련 전문교과 30단위 이상(2027 기준)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한양대학교(ERICA)/한양대학교(ERICA)_2027학년도_정시모집요강.pdf",
+   "note": "수시 학생부종합(고른기회)에도 '특성화고교졸업자' 자격이 있지만 다른 자격 학생들과 같이 경쟁해요(기계 3명).",
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "인하대",
+   "region": "인천",
+   "type": "4년제",
+   "dept": "기계공학과·항공우주공학과·조선해양공학과",
+   "track": "정시 수능(특성화고교졸업자)(정원외)",
+   "kind": "특성화고특별",
+   "quota": "기계 2명, 항공우주 2명, 조선해양 1명",
+   "method": "수능100",
+   "csat_min": "수능 100% 전형",
+   "timeline": "1월 정시 원서",
+   "eligibility": "동일계열 기준학과 또는 관련 전문교과 30단위 이상(2027 기준)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/인하대학교/인하대학교_2027학년도_정시모집요강.pdf",
+   "note": "수시에는 특성화고 전형이 없고 정시만 있어요.",
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "아주대",
+   "region": "경기",
+   "type": "4년제",
+   "dept": "기계공학과",
+   "track": "정시 다군 수능(특성화고졸업자)(정원외)",
+   "kind": "특성화고특별",
+   "quota": "2명",
+   "method": "수능100",
+   "csat_min": "수능 100% 전형",
+   "timeline": "1월 정시 원서",
+   "eligibility": "동일계열 기준학과 또는 관련 전문교과 30단위 이상(2027 기준)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/아주대학교/아주대학교_2027학년도_정시모집요강.pdf",
+   "note": "수시에는 특성화고 전형이 없어요.",
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "경기대",
+   "region": "경기",
+   "type": "4년제",
+   "dept": "기계시스템공학과",
+   "track": "정시 다군 수능(특성화고졸업자)(정원외)",
+   "kind": "특성화고특별",
+   "quota": "2명",
+   "method": "수능100",
+   "csat_min": "수능 100% 전형",
+   "timeline": "1월 정시 원서",
+   "eligibility": "기계과·냉동공조과·산업설비과 등 또는 공업 관련 교과 30학점 이상(2027 기준)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/경기대학교/경기대학교_2027학년도_정시모집요강.pdf",
+   "note": "2027부터 공학계열 특성화고 전형이 수시에서 정시로 옮겨졌어요.",
+   "kindLabel": "특성화고 전형"
+  },
+  {
+   "univ": "충남대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "기계공학부",
+   "track": "학생부교과(지역인재전형)",
+   "kind": "지역인재",
+   "quota": "16명",
+   "method": "교과100",
+   "csat_min": "있음: 국·영·수·과탐 중 상위 3개 합 12등급 이내",
+   "timeline": "9월 원서, 12월 발표",
+   "eligibility": "충청권 고교 전 과정 이수(특성화고 가능)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/충남대학교/충남대학교_2027학년도_수시모집요강.pdf",
+   "note": "메카트로닉스 5, 자율운항 9, 항공우주 6명.",
+   "kindLabel": "지역인재"
+  },
+  {
+   "univ": "한밭대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "기계공학과",
+   "track": "지역인재(종합)",
+   "kind": "지역인재",
+   "quota": "7명",
+   "method": "1단계 서류100(5배수), 2단계 1단계70+면접30",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 11월 면접",
+   "eligibility": "충청권 고교 3년 전 과정 이수",
+   "year": "2027",
+   "source": "https://addon.jinhakapply.com/Nesin/3004/2027/download/한밭대_수시_모집요강.pdf",
+   "note": "우주국방첨단융합학과 4명.",
+   "kindLabel": "지역인재"
+  },
+  {
+   "univ": "충북대",
+   "region": "충북",
+   "type": "4년제",
+   "dept": "기계공학부",
+   "track": "학생부교과(지역인재)",
+   "kind": "지역인재",
+   "quota": "13명",
+   "method": "교과100",
+   "csat_min": "있음: 상위 2개 영역 합 8 이내(수학 필수)",
+   "timeline": "9월 원서",
+   "eligibility": "충청권 고교 전 과정 이수(특성화고 가능)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/충북대학교/충북대학교_2027학년도_수시모집요강.pdf",
+   "note": "지능로봇공학과 7명.",
+   "kindLabel": "지역인재"
+  },
+  {
+   "univ": "한국기술교육대(코리아텍)",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "기계공학부·메카트로닉스공학부",
+   "track": "학생부교과 지역인재",
+   "kind": "지역인재",
+   "quota": "기계 12명, 메카트로닉스 12명",
+   "method": "교과100",
+   "csat_min": "있음: 상위 2개 영역 합 8 이내",
+   "timeline": "9월 원서, 12월 발표",
+   "eligibility": "충청권 고교 3년 이수(특성화고 가능)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한국기술교육대학교/한국기술교육대학교_2027학년도_수시모집요강.pdf",
+   "note": "반영 교과는 국·수·영·과 전 과목.",
+   "kindLabel": "지역인재"
+  },
+  {
+   "univ": "순천향대",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "기계공학과·스마트자동차학과",
+   "track": "충청형지역인재(학생부교과)",
+   "kind": "지역인재",
+   "quota": "기계 5명, 스마트자동차 4명",
+   "method": "교과100",
+   "csat_min": "없음",
+   "timeline": "9월 원서",
+   "eligibility": "충청권 고교 전 과정 이수",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/순천향대학교/순천향대학교_2027학년도_수시모집요강.pdf",
+   "note": null,
+   "kindLabel": "지역인재"
+  },
+  {
+   "univ": "호서대",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "기계공학과·지능로봇학과·미래자동차공학과",
+   "track": "학생부교과 지역인재",
+   "kind": "지역인재",
+   "quota": "기계 6명, 지능로봇 4명, 미래자동차 7명",
+   "method": "교과100",
+   "csat_min": "없음",
+   "timeline": "9월 원서",
+   "eligibility": "충청권 고교 전 과정 이수(특성화고 가능)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/호서대학교/호서대학교_2027학년도_수시모집요강.pdf",
+   "note": null,
+   "kindLabel": "지역인재"
+  },
+  {
+   "univ": "선문대",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "기계공학과·미래자동차공학부·지능로봇공학과",
+   "track": "지역학생전형(학생부교과)",
+   "kind": "지역인재",
+   "quota": "기계 11명, 미래자동차 4명, 지능로봇 4명",
+   "method": "교과100",
+   "csat_min": "없음",
+   "timeline": "9월 원서",
+   "eligibility": "충청권 고교 전 과정 이수",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/선문대학교/선문대학교_2027학년도_수시모집요강.pdf",
+   "note": null,
+   "kindLabel": "지역인재"
+  },
+  {
+   "univ": "한남대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "기계공학과",
+   "track": "지역인재교과우수자",
+   "kind": "지역인재",
+   "quota": "10명",
+   "method": "교과100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": "충청권 고교 입학~졸업",
+   "year": "2027",
+   "source": "https://ibsi.hannam.ac.kr/upload/GUIDES/20260529180909001.pdf",
+   "note": "AI로봇융합공학과 8명.",
+   "kindLabel": "지역인재"
+  },
+  {
+   "univ": "우송대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "철도차량시스템학과",
+   "track": "학생부교과 지역인재",
+   "kind": "지역인재",
+   "quota": "3명",
+   "method": "교과100",
+   "csat_min": "없음",
+   "timeline": "9월 원서",
+   "eligibility": "충청권 고교 3년 재학",
+   "year": "2027",
+   "source": "https://ent.wsu.ac.kr/site/ent/popup/2027susi.pdf",
+   "note": null,
+   "kindLabel": "지역인재"
+  },
+  {
+   "univ": "대전대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "소방방재학과",
+   "track": "지역인재Ⅰ(학생부교과)",
+   "kind": "지역인재",
+   "quota": "7명",
+   "method": "교과90+출결10",
+   "csat_min": "없음",
+   "timeline": "9월 원서",
+   "eligibility": "충청권 고교 졸업(예정)",
+   "year": "2027",
+   "source": "https://ipsi.dju.ac.kr/upload/GUIDES/2027_rolling.pdf",
+   "note": null,
+   "kindLabel": "지역인재"
+  },
+  {
+   "univ": "충남대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "기계공학부",
+   "track": "학생부종합Ⅰ(면접전형)",
+   "kind": "학생부종합",
+   "quota": "12명",
+   "method": "1단계 서류100(2배수), 2단계 서류200+면접100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 12월 면접",
+   "eligibility": null,
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/충남대학교/충남대학교_2027학년도_수시모집요강.pdf",
+   "note": "같은 전형으로 메카트로닉스 4, 자율운항시스템 8, 항공우주 4명. 서류전형(서류100)도 있어요(기계공학부 8명).",
+   "kindLabel": "학생부종합"
+  },
+  {
+   "univ": "한밭대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "기계공학과",
+   "track": "학생부종합(일반)",
+   "kind": "학생부종합",
+   "quota": "20명",
+   "method": "서류100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": null,
+   "year": "2027",
+   "source": "https://addon.jinhakapply.com/Nesin/3004/2027/download/한밭대_수시_모집요강.pdf",
+   "note": "우주국방첨단융합학과도 7명 모집.",
+   "kindLabel": "학생부종합"
+  },
+  {
+   "univ": "충북대",
+   "region": "충북",
+   "type": "4년제",
+   "dept": "기계공학부",
+   "track": "학생부종합Ⅰ",
+   "kind": "학생부종합",
+   "quota": "11명",
+   "method": "서류100",
+   "csat_min": "없음",
+   "timeline": "9월 원서",
+   "eligibility": null,
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/충북대학교/충북대학교_2027학년도_수시모집요강.pdf",
+   "note": "지능로봇공학과 6명.",
+   "kindLabel": "학생부종합"
+  },
+  {
+   "univ": "공주대",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "기계자동차공학부·미래자동차공학과(천안공대)",
+   "track": "학생부종합 일반전형",
+   "kind": "학생부종합",
+   "quota": "기계자동차 30명, 미래자동차 6명",
+   "method": "서류100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": null,
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/국립공주대학교/국립공주대학교_2027학년도_수시모집요강.pdf",
+   "note": null,
+   "kindLabel": "학생부종합"
+  },
+  {
+   "univ": "한국기술교육대(코리아텍)",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "기계공학부·메카트로닉스공학부",
+   "track": "학생부종합 창의인재(서류형·면접형)",
+   "kind": "학생부종합",
+   "quota": "기계 38명, 메카트로닉스 34명",
+   "method": "서류형 서류100 / 면접형 1단계 서류100, 2단계 1단계60+면접40",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 10월 말 면접",
+   "eligibility": "특성화고 지원 가능",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한국기술교육대학교/한국기술교육대학교_2027학년도_수시모집요강.pdf",
+   "note": null,
+   "kindLabel": "학생부종합"
+  },
+  {
+   "univ": "순천향대",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "기계공학과·스마트자동차학과",
+   "track": "학생부종합 일반학생",
+   "kind": "학생부종합",
+   "quota": "기계 13명, 스마트자동차 13명",
+   "method": "서류100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": null,
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/순천향대학교/순천향대학교_2027학년도_수시모집요강.pdf",
+   "note": null,
+   "kindLabel": "학생부종합"
+  },
+  {
+   "univ": "호서대",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "기계공학과·지능로봇학과·미래자동차공학과",
+   "track": "학생부종합 호서인재",
+   "kind": "학생부종합",
+   "quota": "기계 8명, 지능로봇 7명, 미래자동차 12명",
+   "method": "서류100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": "특성화고 지원 가능",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/호서대학교/호서대학교_2027학년도_수시모집요강.pdf",
+   "note": null,
+   "kindLabel": "학생부종합"
+  },
+  {
+   "univ": "선문대",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "기계공학과·미래자동차공학부·지능로봇공학과",
+   "track": "서류전형(학생부종합)",
+   "kind": "학생부종합",
+   "quota": "기계 7명, 미래자동차 8명, 지능로봇 3명",
+   "method": "서류100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": null,
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/선문대학교/선문대학교_2027학년도_수시모집요강.pdf",
+   "note": null,
+   "kindLabel": "학생부종합"
+  },
+  {
+   "univ": "한남대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "기계공학과",
+   "track": "한남인재Ⅰ(서류)",
+   "kind": "학생부종합",
+   "quota": "7명",
+   "method": "서류100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": null,
+   "year": "2027",
+   "source": "https://ibsi.hannam.ac.kr/upload/GUIDES/20260529180909001.pdf",
+   "note": null,
+   "kindLabel": "학생부종합"
+  },
+  {
+   "univ": "우송대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "철도차량시스템학과",
+   "track": "학생부종합(서류형·면접형)",
+   "kind": "학생부종합",
+   "quota": "서류형 6명, 면접형 3명",
+   "method": "서류형 서류100 / 면접형 1단계 서류100, 2단계 1단계70+면접30",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 10월 면접",
+   "eligibility": null,
+   "year": "2027",
+   "source": "https://ent.wsu.ac.kr/site/ent/popup/2027susi.pdf",
+   "note": null,
+   "kindLabel": "학생부종합"
+  },
+  {
+   "univ": "건양대",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "유무인항공학과",
+   "track": "일반[교과]",
+   "kind": "학생부교과",
+   "quota": "20명",
+   "method": "교과100",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": null,
+   "year": "2027",
+   "source": "https://ipsi.konyang.ac.kr/cmm/fms/FileDown.do?atchFileId=FILE_000000000223383&fileSn=0",
+   "note": "국방반도체공학과·국방산업경영학부·국방XR학부도 같은 전형으로 모집해요.",
+   "kindLabel": "학생부교과"
+  },
+  {
+   "univ": "서울과학기술대",
+   "region": "서울",
+   "type": "4년제",
+   "dept": "융합기계공학과(미래융합대학)",
+   "track": "특성화고졸 재직자전형",
+   "kind": "재직자",
+   "quota": "20명",
+   "method": "교과100(1·2학년 성적)",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 면접 없음",
+   "eligibility": "특성화고 졸업 후 산업체 3년(1,095일) 이상 재직. 고3 2학기 근무·군 의무복무 기간 인정",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서울과학기술대학교/서울과학기술대학교_2027학년도_수시모집요강.pdf",
+   "note": "서울과기대는 고교 졸업 직후 지원하는 특성화고 특별전형이 없어요(2027 기준). 일반전형이나 재직자 전형으로 갈 수 있어요.",
+   "kindLabel": "재직자(선취업 후진학)"
+  },
+  {
+   "univ": "인하대",
+   "region": "인천",
+   "type": "4년제",
+   "dept": "메카트로닉스공학과(미래융합대학)",
+   "track": "특성화고 등을 졸업한 재직자전형",
+   "kind": "재직자",
+   "quota": "39명",
+   "method": "서류100",
+   "csat_min": "없음",
+   "timeline": "9월 원서",
+   "eligibility": "산업체 3년(1,095일) 이상, 원서접수 때 재직 중",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/인하대학교/인하대학교_2027학년도_수시모집요강.pdf",
+   "note": "야간·주말 수업.",
+   "kindLabel": "재직자(선취업 후진학)"
+  },
+  {
+   "univ": "아주대",
+   "region": "경기",
+   "type": "4년제",
+   "dept": "융합시스템공학과",
+   "track": "특성화고 등을 졸업한 재직자전형",
+   "kind": "재직자",
+   "quota": "56명",
+   "method": "1단계 서류100(3배수), 2단계 1단계70+면접30",
+   "csat_min": "없음",
+   "timeline": "9월 원서",
+   "eligibility": "고교 졸업 다음 날부터 산업체 3년(1,095일) 이상 재직",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/아주대학교/아주대학교_2027학년도_수시모집요강.pdf",
+   "note": null,
+   "kindLabel": "재직자(선취업 후진학)"
+  },
+  {
+   "univ": "한양대 ERICA",
+   "region": "경기",
+   "type": "4년제",
+   "dept": "융합시스템공학과",
+   "track": "특성화고졸 재직자전형",
+   "kind": "재직자",
+   "quota": "47명",
+   "method": "서류100",
+   "csat_min": "없음",
+   "timeline": "9월 원서",
+   "eligibility": "특성화고 등 졸업 후 산업체 3년 이상 재직",
+   "year": "2027",
+   "source": "https://goerica.hanyang.ac.kr/upload/BBS0061/202606040853276MB97Z.PDF",
+   "note": null,
+   "kindLabel": "재직자(선취업 후진학)"
+  },
+  {
+   "univ": "한국공학대",
+   "region": "경기",
+   "type": "4년제",
+   "dept": "산업융합공학과(야간)",
+   "track": "특성화고졸 재직자전형(정원외)",
+   "kind": "재직자",
+   "quota": "36명",
+   "method": "서류100",
+   "csat_min": "없음",
+   "timeline": "9월 원서",
+   "eligibility": "특성화고 등 졸업 후 산업체 3년 이상(4대보험 가입기간 기준)",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%ED%95%9C%EA%B5%AD%EA%B3%B5%ED%95%99%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EA%B5%AD%EA%B3%B5%ED%95%99%EB%8C%80%ED%95%99%EA%B5%90_2027%ED%95%99%EB%85%84%EB%8F%84_%EC%88%98%EC%8B%9C%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95.pdf",
+   "note": null,
+   "kindLabel": "재직자(선취업 후진학)"
+  },
+  {
+   "univ": "한밭대",
+   "region": "대전",
+   "type": "4년제",
+   "dept": "전기시스템공학과(야간)",
+   "track": "특성화고 등을 졸업한 재직자전형(야간)",
+   "kind": "재직자",
+   "quota": "82명(2개 학과 통합)",
+   "method": "1단계 서류100(5배수), 2단계 1단계70+면접30",
+   "csat_min": "없음",
+   "timeline": "9월 원서",
+   "eligibility": "고교 졸업 다음 날부터 산업체 3년(1,095일) 이상",
+   "year": "2027",
+   "source": "https://addon.jinhakapply.com/Nesin/3004/2027/download/한밭대_수시_모집요강.pdf",
+   "note": "기계 전공은 없어요. 대전에서 다닐 수 있는 재직자 과정이에요.",
+   "kindLabel": "재직자(선취업 후진학)"
+  },
+  {
+   "univ": "건양대",
+   "region": "충남",
+   "type": "4년제",
+   "dept": "방위산업공학전공(채용조건형)·유무인항공학과(계약)",
+   "track": "채용조건형[계약]",
+   "kind": "국방",
+   "quota": "방위산업공학 12명, 유무인항공 8명",
+   "method": "교과80+면접20",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 10월 면접",
+   "eligibility": "고교 졸업(예정)자(특성화고 제한 없음)",
+   "year": "2027",
+   "source": "https://ipsi.konyang.ac.kr/cmm/fms/FileDown.do?atchFileId=FILE_000000000223383&fileSn=0",
+   "note": "방산기업 채용연계 계약학과예요. 등록금 50%를 기업이 지원하고 졸업 후 그 기업에 채용돼요.",
+   "kindLabel": "국방·계약학과"
+  },
+  {
+   "univ": "아주대",
+   "region": "경기",
+   "type": "4년제",
+   "dept": "국방디지털융합학과(공군 계약학과)",
+   "track": "학생부종합(국방IT우수인재1)",
+   "kind": "국방",
+   "quota": "23명",
+   "method": "1단계 서류100(3배수), 2단계 1단계70+면접30 + 공군 신체·체력·신원 판정",
+   "csat_min": "없음",
+   "timeline": "9월 원서, 11월 신체검사·면접",
+   "eligibility": "임관일 기준 만 20~29세 등 군 임관 조건",
+   "year": "2027",
+   "source": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/아주대학교/아주대학교_2027학년도_수시모집요강.pdf",
+   "note": "졸업 후 공군 장교로 임관하고 의무 복무가 있어요.",
+   "kindLabel": "국방·계약학과"
+  },
+  {
+   "univ": "한양대 ERICA",
+   "region": "경기",
+   "type": "4년제",
+   "dept": "국방전략기술공학과(해군 협약)",
+   "track": "학생부종합(국방전략기술공학)",
+   "kind": "국방",
+   "quota": "37명",
+   "method": "1단계 서류100(3배수), 2단계 1단계70+면접15+체력15",
+   "csat_min": "없음(정시는 있음)",
+   "timeline": "9월 원서",
+   "eligibility": "임관일 기준 만 20~29세 등 군 임관 조건",
+   "year": "2027",
+   "source": "https://goerica.hanyang.ac.kr/upload/BBS0061/202606040853276MB97Z.PDF",
+   "note": "졸업 후 해군 소위 임관, 7년 복무(중도 전역 불가).",
+   "kindLabel": "국방·계약학과"
+  },
+  {
+   "univ": "경북전문대",
+   "region": "경북",
+   "type": "전문대",
+   "dept": "군사학과(부사관)",
+   "track": "특별전형 대학자체기준(특성화고 등 졸업자)",
+   "kind": "국방",
+   "quota": null,
+   "method": "학생부(교과80+출결20) + 면접",
+   "csat_min": "없음",
+   "timeline": "9월 수시1차, 10월 면접",
+   "eligibility": "특성화고 졸업(예정)자. 군사학과는 신체 기준(시력·BMI 등) 별도",
+   "year": "2027",
+   "source": "https://ipsi.kbc.ac.kr/ipsi/ajx_json/UploadMgr/downloadRun.do?qcode=Q29udGVudE1nciwzNzQxNixZ",
+   "note": "교내 육군 부사관학군단(RNTC)이 있어요.",
+   "kindLabel": "국방·계약학과"
+  },
+  {
+   "univ": "영진전문대",
+   "region": "대구",
+   "type": "전문대",
+   "dept": "국방군사계열(부사관)",
+   "track": "특성화고전형",
+   "kind": "국방",
+   "quota": null,
+   "method": "학생부(1학년 30%, 2학년 30%, 3학년 1학기 40%)",
+   "csat_min": "없음",
+   "timeline": "9월 수시1차, 11월 수시2차",
+   "eligibility": null,
+   "year": "2027",
+   "source": "https://m.etnews.com/20260902000013",
+   "note": "육·해·공군과 협약한 부사관 양성 과정(보도 기준). 학과별 인원은 모집요강에서 확인하세요.",
+   "kindLabel": "국방·계약학과"
+  },
+  {
+   "univ": "세종대",
+   "region": "서울",
+   "type": "4년제",
+   "dept": "국방융합기술학과(LIG 협력 계약학과)",
+   "track": "계약학과",
+   "kind": "국방",
+   "quota": null,
+   "method": null,
+   "csat_min": null,
+   "timeline": null,
+   "eligibility": null,
+   "year": "2027",
+   "source": "https://mobile.newsis.com/view/NISX20260723_0003720482",
+   "note": "2026년 7월 방산기업 LIG와 협약(보도 기준). 모집 방법은 세종대 입학처에서 확인하세요.",
+   "kindLabel": "국방·계약학과"
+  },
+  {
+   "univ": "한국폴리텍대학 대전캠퍼스",
+   "region": "대전",
+   "type": "전문대",
+   "dept": "산업설비과·반도체융합기계과·전기전자제어과 등(2년제)",
+   "track": "학위과정 모집",
+   "kind": "일반",
+   "quota": null,
+   "method": null,
+   "csat_min": null,
+   "timeline": null,
+   "eligibility": null,
+   "year": "2027",
+   "source": "https://www.kopo.ac.kr/daejeon/index.do",
+   "note": "우리 학과와 가장 가까운 '산업설비과'가 있어요. 전형방법은 캠퍼스 홈페이지에서 확인하세요.",
+   "kindLabel": "일반 모집"
+  },
+  {
+   "univ": "한국폴리텍대학 아산캠퍼스",
+   "region": "충남",
+   "type": "전문대",
+   "dept": "산업설비자동화과·반도체기계과 등(2년제)",
+   "track": "학위과정 모집",
+   "kind": "일반",
+   "quota": null,
+   "method": null,
+   "csat_min": null,
+   "timeline": null,
+   "eligibility": null,
+   "year": "2027",
+   "source": "https://www.kopo.ac.kr/asan/index.do",
+   "note": null,
+   "kindLabel": "일반 모집"
+  },
+  {
+   "univ": "대전과학기술대",
+   "region": "대전",
+   "type": "전문대",
+   "dept": "스마트기계공학과 등",
+   "track": "수시 모집",
+   "kind": "일반",
+   "quota": null,
+   "method": null,
+   "csat_min": null,
+   "timeline": "수시2차 11월",
+   "eligibility": null,
+   "year": "2027",
+   "source": "https://ipsi.dst.ac.kr/ipsi/CMS/Contents/Contents.do?mCode=MN026",
+   "note": "특성화고 전형이 있는지는 입학처에서 확인하세요.",
+   "kindLabel": "일반 모집"
+  }
+ ]
+}

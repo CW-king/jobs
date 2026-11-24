@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>방산설비과 길잡이</title>
+<meta name="description" content="충남기계공업고등학교 방산설비과 학생을 위한 졸업 후 진로, 자격증 로드맵, 학습·취업·진학 바로가기.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Black+Han+Sans&display=swap">
+<style>
+:root{
+  --bg:#f6f8fc;--surface:#ffffff;--surface-2:#eff3fa;--line:#d6e0ee;--line-soft:#e6edf6;
+  --ink:#0f2547;--ink-2:#3b5172;--muted:#64768f;
+  --navy:#0a2c5c;--navy-2:#123f7d;--on-navy:#ffffff;--on-navy-2:#c9daf3;
+  --gold:#ffd23f;--on-gold:#0a2c5c;--accent:#1556b8;--accent-soft:#e6efff;--accent-ink:#0f4ba3;
+  --warn:#a86200;--warn-soft:#fff1d6;--ok:#17804b;--ok-soft:#e2f5ea;--hot:#c8322f;--hot-soft:#fde8e7;
+  --shadow:0 2px 10px rgba(16,42,84,.07);--shadow-h:0 10px 26px rgba(16,42,84,.16);
+  --f-display:"Black Han Sans","IBM Plex Sans KR","Malgun Gothic",sans-serif;
+  --f-body:"IBM Plex Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0b1424;--surface:#13203a;--surface-2:#1a2a47;--line:#2a3d60;--line-soft:#22334f;
+  --ink:#e8eefa;--ink-2:#b4c3dc;--muted:#8899b6;--navy:#071d3d;--navy-2:#0e2f5f;--on-navy-2:#a9c1e6;
+  --accent:#7aa8ff;--accent-soft:#1d3560;--accent-ink:#a9c6ff;
+  --warn:#ffc163;--warn-soft:#45330f;--ok:#6fd59c;--ok-soft:#163b2a;--hot:#ff7a72;--hot-soft:#4a1f22;
+  --shadow:0 2px 10px rgba(0,0,0,.3);--shadow-h:0 10px 26px rgba(0,0,0,.45);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b1424;--surface:#13203a;--surface-2:#1a2a47;--line:#2a3d60;--line-soft:#22334f;
+  --ink:#e8eefa;--ink-2:#b4c3dc;--muted:#8899b6;--navy:#071d3d;--navy-2:#0e2f5f;--on-navy-2:#a9c1e6;
+  --accent:#7aa8ff;--accent-soft:#1d3560;--accent-ink:#a9c6ff;
+  --warn:#ffc163;--warn-soft:#45330f;--ok:#6fd59c;--ok-soft:#163b2a;--hot:#ff7a72;--hot-soft:#4a1f22;
+  --shadow:0 2px 10px rgba(0,0,0,.3);--shadow-h:0 10px 26px rgba(0,0,0,.45);color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+a{color:var(--accent-ink)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+svg.i{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1000px;margin:0 auto}
+
+/* 상단 소개 */
+.hero{background:linear-gradient(120deg,var(--navy),var(--navy-2));color:var(--on-navy);padding-block:28px 26px}
+.hero .school{color:var(--on-navy-2);font-weight:600;font-size:14px}
+.hero h1{font-family:var(--f-display);font-weight:400;font-size:clamp(30px,5vw,42px);margin:4px 0 8px;line-height:1.1}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{margin:0;color:var(--on-navy-2);max-width:640px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.badges span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 12px;font-size:14px;font-weight:600}
+
+/* 3개 큰 메뉴 */
+.big3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:-22px;position:relative}
+.big3 a{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow-h);transition:transform .15s,border-color .15s}
+.big3 a:hover{transform:translateY(-2px);border-color:var(--accent)}
+.big3 .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:var(--on-navy)}
+.big3 b{font-size:19px}
+.big3 small{color:var(--ink-2);font-size:14px;line-height:1.45}
+.c-study .ic{background:#2f7d5b}.c-job .ic{background:var(--navy-2)}.c-uni .ic{background:#7a4bb0}
+
+section{margin-top:30px}
+h2{font-size:22px;margin:0 0 4px;line-height:1.35}
+.sub{margin:0 0 14px;color:var(--ink-2)}
+
+/* 진로 흐름 */
+.flow{display:grid;grid-template-columns:200px 1fr;gap:14px;align-items:center}
+.start{background:var(--gold);color:var(--on-gold);border-radius:18px;padding:18px;text-align:center;font-weight:700}
+.start b{display:block;font-family:var(--f-display);font-weight:400;font-size:22px}
+.routes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.route{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow)}
+.route:hover{border-color:var(--accent)}
+.route .ic{width:40px;height:40px;border-radius:12px;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center;flex:none}
+.route b{display:block;font-size:16.5px}
+.route small{display:block;color:var(--ink-2);font-size:14px;line-height:1.45}
+.route .go{margin-left:auto;color:var(--muted);align-self:center;font-size:20px}
+
+/* 자격증 계단 */
+.ladder{display:flex;flex-direction:column;gap:0}
+.step{display:grid;grid-template-columns:56px 1fr;gap:12px}
+.step .rail{display:flex;flex-direction:column;align-items:center}
+.step .dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-display);font-size:16px;color:var(--on-navy);background:var(--navy-2);flex:none}
+.step .line{flex:1;width:3px;background:var(--line);margin:4px 0}
+.step:last-child .line{display:none}
+.step .body{padding-bottom:20px;min-width:0}
+.step h3{margin:6px 0 2px;font-size:18px}
+.step .when{font-size:13.5px;font-weight:700;color:var(--accent-ink)}
+.step p{margin:4px 0 10px;color:var(--ink-2);font-size:15px}
+.step.hl .dot{background:var(--gold);color:var(--on-gold)}
+.certs{display:flex;flex-wrap:wrap;gap:8px}
+.cert{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:8px 12px;font-weight:700;font-size:15px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow)}
+.cert small{font-weight:600;color:var(--muted);font-size:12.5px}
+.cert.main{border:2px solid var(--gold)}
+.cert .q{font-size:12px;font-weight:700;color:var(--ok);background:var(--ok-soft);border-radius:6px;padding:1px 6px}
+.cert .j{font-size:12px;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);border-radius:6px;padding:1px 6px}
+.key{background:var(--ok-soft);border-radius:16px;padding:14px 16px;margin:4px 0 12px}
+.key b{display:block;font-size:16.5px;margin-bottom:2px}
+.key p{margin:0;color:var(--ink);font-size:15px}
+.fine{font-size:13.5px;color:var(--muted);margin:6px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:13.5px;color:var(--ink-2);margin:0 0 14px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+
+/* 학습 */
+.study{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.study a{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow);font-weight:700;font-size:17px}
+.study a:hover{border-color:var(--accent)}
+.study a .ic{width:44px;height:44px;border-radius:12px;background:#2f7d5b;color:#fff;display:grid;place-items:center;flex:none}
+.study a small{display:block;font-weight:500;color:var(--ink-2);font-size:13.5px}
+.study a .go{margin-left:auto;color:var(--muted)}
+
+footer{margin-top:36px;padding-block:20px 40px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line-soft)}
+footer p{margin:4px 0}
+
+@media (max-width:760px){
+  .big3{grid-template-columns:1fr;gap:10px}
+  .big3 a{flex-direction:row;align-items:center;gap:12px;padding:14px}
+  .big3 a>div{display:flex;flex-direction:column}
+  .flow{grid-template-columns:1fr}
+  .routes{grid-template-columns:1fr}
+  .study{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="hero gut"><div class="wrap">
+  <div class="school">충남기계공업고등학교 · 협약형 특성화고(방위산업)</div>
+  <h1><em>방산설비과</em> 길잡이</h1>
+  <p>방위산업과 국가 기반 산업에 필요한 설비 기술을 배워요. 특수용접(TIG·CO₂), 로봇 용접, 공조냉동 설비, 에너지 관리를 현장처럼 실습해요.</p>
+  <div class="badges"><span>용접</span><span>배관</span><span>공조냉동</span><span>에너지관리</span><span>방산 설비</span></div>
+</div></header>
+
+<main class="gut"><div class="wrap">
+  <nav class="big3" aria-label="바로가기">
+    <a class="c-study" href="#study"><span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span><div><b>학습</b><small>자격증 문제은행으로 공부하기</small></div></a>
+    <a class="c-job" href="../"><span class="ic"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span><div><b>취업</b><small>공공기관·대기업 채용공고판</small></div></a>
+    <a class="c-uni" href="../jinhak/"><span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><div><b>진학</b><small>특성화고 전형·대학 정보</small></div></a>
+  </nav>
+
+  <section id="routes">
+    <h2>졸업 후 어디로 갈 수 있을까?</h2>
+    <p class="sub">방산설비과에서 배운 기술로 갈 수 있는 길이에요. 눌러서 자세히 보세요.</p>
+    <div class="flow">
+      <div class="start">방산설비과<b>졸업</b></div>
+      <div class="routes">
+        <a class="route" href="../"><span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></span><div><b>방산·대기업 생산직 취업</b><small>방산 업체 설비 관리, 플랜트 건설, 건축 설비·유지보수</small></div><span class="go">›</span></a>
+        <a class="route" href="../#list"><span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M3 10h18M5 10V20h14V10M12 3 3 8h18z"/></svg></span><div><b>공공기관 고졸 채용</b><small>발전·에너지·철도 공기업 등 고졸 전형</small></div><span class="go">›</span></a>
+        <a class="route" href="../jinhak/#univ"><span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><div><b>대학 진학</b><small>특성화고 전형으로 기계 계열 학과</small></div><span class="go">›</span></a>
+        <a class="route" href="../jinhak/#paths"><span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></svg></span><div><b>군 기술 부사관·방산 계약학과</b><small>용접·설비 특기, 방산기업 채용 연계 학과</small></div><span class="go">›</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="certs">
+    <h2>자격증 로드맵</h2>
+    <p class="sub">기능사 → 산업기사 → 기사 순서로 올라가요. 자격증을 누르면 그 자격증을 우대하는 채용공고를 볼 수 있어요.</p>
+    <div class="legend"><span><span class="q">문제은행</span> 우리 문제은행 있음</span><span><span class="j">공고 N</span> 지금 우대하는 공고 수</span></div>
+    <div class="ladder" id="ladder"></div>
+  </section>
+
+  <section id="study">
+    <h2>학습 · 문제은행</h2>
+    <p class="sub">필기시험을 문제은행으로 연습해요. 문제은행은 계속 늘어나요.</p>
+    <div class="study" id="study-list"></div>
+  </section>
+
+  <footer>
+    <p>학과 소개: <a href="http://www.ccnnews.co.kr/news/articleView.html?idxno=410815" target="_blank" rel="noopener">충청뉴스 「협약형 특성화고⑦ 충남기계공고」</a> · 응시자격: <a href="https://www.q-net.or.kr/crf006.do?id=crf00603&tabIdx=3&gradeType=31&gSite=Q&gId=" target="_blank" rel="noopener">큐넷 산업기사·기사 응시자격</a>, <a href="https://www.q-net.or.kr/crf006.do?id=crf00630&gSite=Q&gId=" target="_blank" rel="noopener">유사 직무분야 범위</a></p>
+    <p>응시 전에는 꼭 큐넷 「응시자격 자가진단」으로 확인하세요.</p>
+  </footer>
+</div></main>
+
+<script>
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const STUDY={'용접':'https://cw-king.github.io/welding/','공조냉동':'https://cw-king.github.io/hvac/','에너지관리':'https://cw-king.github.io/energy-manager/'};
+// 문제은행이 실제로 다루는 자격증만 표시
+const STUDY_MAP={'피복아크용접기능사':'용접','가스텅스텐아크용접기능사':'용접','이산화탄소가스아크용접기능사':'용접','용접산업기사':'용접','공조냉동기계기능사':'공조냉동','에너지관리기능사':'에너지관리'};
+const studyFor=n=>STUDY[STUDY_MAP[n]];
+const LADDER=[
+  {n:'1',when:'1~2학년',title:'기능사',desc:'응시자격 제한이 없어 학생 누구나 볼 수 있어요. 실기 위주로 손기술을 증명해요.',
+   certs:[['피복아크용접기능사'],['가스텅스텐아크용접기능사','TIG'],['이산화탄소가스아크용접기능사','CO₂'],['배관기능사'],['공조냉동기계기능사'],['에너지관리기능사']]},
+  {n:'2',when:'3학년 · 과정평가형',title:'용접산업기사',hl:true,desc:'학교 수업(과정평가형 교육훈련과정)을 마치고 내부·외부평가에 합격하면 취득해요. 고등학생이 산업기사를 딸 수 있는 큰 기회예요.',
+   certs:[['용접산업기사','과정평가형',true]]},
+  {n:'3',when:'용접산업기사 취득 후 바로',title:'다른 산업기사 도전',key:true,desc:'',
+   certs:[['배관산업기사'],['공조냉동기계산업기사'],['에너지관리산업기사'],['판금제관산업기사'],['산업안전산업기사']]},
+  {n:'4',when:'산업기사 + 실무 1년',title:'기사',desc:'산업기사를 딴 뒤 같은·비슷한 직무분야에서 1년 이상 일하면 기사에 응시할 수 있어요(기능사만 있으면 실무 3년).',
+   certs:[['용접기사'],['공조냉동기계기사'],['에너지관리기사'],['산업안전기사']]}
+];
+let COUNT={};
+function render(){
+  document.getElementById('ladder').innerHTML=LADDER.map(s=>`<div class="step ${s.hl?'hl':''}"><div class="rail"><span class="dot">${s.n}</span><span class="line"></span></div><div class="body">
+    <span class="when">${esc(s.when)}</span><h3>${esc(s.title)}</h3>
+    ${s.key?`<div class="key"><b>용접산업기사가 있으면 실무 경력 없이 다른 산업기사에 바로 응시할 수 있어요!</b><p>큐넷 기준: "동일 및 유사 직무분야의 다른 종목 산업기사 등급 이상 자격을 취득한 사람"은 산업기사 응시 가능. 용접(재료 분야)은 기계·건설(배관)·에너지·안전관리 분야와 유사 직무로 인정돼요.</p></div>`:''}
+    ${s.desc?`<p>${esc(s.desc)}</p>`:''}
+    <div class="certs">${s.certs.map(([name,sub,main])=>{const st=studyFor(name),c=COUNT[name]||0;return `<a class="cert ${main?'main':''}" href="../#cert=${encodeURIComponent(name)}">${esc(name)}${sub?` <small>${esc(sub)}</small>`:''}${st?' <span class="q">문제은행</span>':''}${c?` <span class="j">공고 ${c}</span>`:''}</a>`}).join('')}</div>
+    ${s.key?'<p class="fine">종목마다 세부 기준이 다를 수 있으니 응시 전 큐넷 「응시자격 자가진단」으로 꼭 확인하세요.</p>':''}
+  </div></div>`).join('');
+}
+document.getElementById('study-list').innerHTML=[['용접','용접기능사·산업기사 필기',STUDY['용접']],['공조냉동','공조냉동기계 필기',STUDY['공조냉동']],['에너지관리','에너지관리기능사 필기',STUDY['에너지관리']]].map(([t,s,u])=>`<a href="${u}" target="_blank" rel="noopener"><span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span><span>${t} 문제은행<small>${s}</small></span><span class="go">↗</span></a>`).join('');
+render();
+Promise.all(['../data/jobs.json','../data/private.json'].map(u=>fetch(u,{cache:'no-store'}).then(r=>r.json()).catch(()=>({jobs:[]})))).then(ds=>{
+  for(const d of ds)for(const j of d.jobs||[])for(const c of new Set(j.certs||[]))COUNT[c]=(COUNT[c]||0)+1;
+  render();
+});
+</script>
+</body>
+</html>

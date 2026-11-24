@@ -457,7 +457,9 @@ function updateTotals(){
   $('.sectors').hidden=!v;
 }
 function route(){
-  const h=(location.hash||'#list').slice(1);
+  let h=(location.hash||'#list').slice(1);
+  // 다른 페이지에서 '#cert=자격증이름'으로 바로 들어올 수 있게
+  if(h.startsWith('cert=')){const c=decodeURIComponent(h.slice(5));if(c&&c!==certSel){certSel=c;view=''}h='cert'}
   let next=['list','private','favorites','certs','guide','cert'].includes(h)?h:'list';
   if(next==='cert'&&!certSel){location.hash='#certs';return}
   if(next!==view){view=next;cat='all';$('#q').value='';setFilterOptions()}
