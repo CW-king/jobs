@@ -6,12 +6,10 @@ name: 채용공고판 자동 수집
 
 on:
   schedule:
-    # 한국시간 06:37, 12:37, 17:37 (= UTC 21:37, 03:37, 08:37)
+    # 2시간마다 17분(한국시간 홀수 시 17분: 01:17, 03:17 … 23:17)
     # GitHub 예약 실행은 바쁠 때 몇 시간 늦거나 건너뛰는 일이 있어(공식 문서에 안내됨)
-    # 하루 3번 걸어 두어 한두 번 빠져도 자료가 오래 묵지 않게 함. 정각(0분)은 몰려서 피함.
-    - cron: '37 21 * * *'
-    - cron: '37 3 * * *'
-    - cron: '37 8 * * *'
+    # 자주 걸어 두어 몇 번 빠져도 자료가 몇 시간 안에 갱신되게 함. 정각(0분)은 몰려서 피함.
+    - cron: '17 */2 * * *'
   workflow_dispatch: {}   # Actions 탭에서 [Run workflow] 버튼으로 바로 실행
   push:                   # 페이지나 수집기를 고쳐 올렸을 때도 바로 반영
     branches: [main]
@@ -63,6 +61,12 @@ jobs:
             git pull --rebase --autostash || true
             git push
           fi
+
+      # 공고가 그대로여도 '확인은 했다'는 시각을 페이지에 보여 주기 위한 파일(저장소에는 커밋하지 않고 배포에만 포함)
+      - name: 마지막 확인 시각 기록
+        run: |
+          node -e "require('fs').writeFileSync('docs/data/status.json', JSON.stringify({checkedAt:new Date().toISOString(), event:process.env.GITHUB_EVENT_NAME, run:Number(process.env.GITHUB_RUN_NUMBER)}))"
+          cat docs/data/status.json
 
       - uses: actions/configure-pages@v5
 
